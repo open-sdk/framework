@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="open-sdk">
+	<description>The (PHP) Open SDK coding standard, based on the PSR-2 guideliness.</description>
+
+	<arg name="encoding" value="utf-8" />
+	<arg name="extensions" value="php" />
+	<arg name="colors" />
+
+	<rule ref="PSR2">
+		<exclude name="Generic.WhiteSpace.ScopeIndent" />
+		<exclude name="Generic.WhiteSpace.DisallowTabIndent" />
+	</rule>
+
+	<rule ref="Generic.WhiteSpace.DisallowSpaceIndent" />
+	<rule ref="Generic.WhiteSpace.ScopeIndent">
+		<properties>
+			<property name="tabIndent" value="true" />
+			<property
+				name="ignoreIndentationTokens"
+				type="array"
+				value="T_COMMENT,T_DOC_COMMENT_OPEN_TAG"
+			/>
+		</properties>
+	</rule>
+
+	<file extension="php">src/</file>
+	<file extension="php">tests/</file>
+</ruleset>

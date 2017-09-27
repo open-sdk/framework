@@ -1,0 +1,50 @@
+{
+	"name": "open-sdk/framework",
+	"type": "library",
+	"description": "White-labeled API SDKs, so you don't have to!",
+	"keywords": [
+		"sdk",
+		"open-sdk",
+		"framework"
+	],
+	"homepage": "https://github.com/open-sdk/framework",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Cedric van Putten",
+			"email": "me@bycedric.com",
+			"homepage": "https://bycedric.com",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": "^7.1"
+	},
+	"require-dev": {
+		"codacy/coverage": "^1.4",
+		"phpunit/phpunit" : "^6.3",
+		"squizlabs/php_codesniffer": "^3.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"OpenSdk\\Framework\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"OpenSdk\\Framework\\Tests\\": "tests/"
+		}
+	},
+	"scripts": {
+		"lint": "vendor/bin/phpcs",
+		"test": "vendor/bin/phpunit"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.0-dev"
+		}
+	},
+	"config": {
+		"sort-packages": true
+	}
+}

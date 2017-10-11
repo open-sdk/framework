@@ -11,111 +11,111 @@ use OpenSdk\Framework\Tests\TestCase;
 
 class FactoryTest extends TestCase
 {
-	public function testFactoryStoresClient()
-	{
-		$request = $this->mockRequest();
-		$response = $this->mockResponse();
-		$client = $this->createClient();
+    public function testFactoryStoresClient()
+    {
+        $request = $this->mockRequest();
+        $response = $this->mockResponse();
+        $client = $this->createClient();
 
-		$factory = new ResourceFactory($request, $response);
+        $factory = new ResourceFactory($request, $response);
 
-		$this->assertSame($factory, $factory->setClient($client));
-		$this->assertSame($client, $factory->getClient());
-	}
+        $this->assertSame($factory, $factory->setClient($client));
+        $this->assertSame($client, $factory->getClient());
+    }
 
-	public function testFactoryStoresRequestAndResponse()
-	{
-		$request = $this->mockRequest();
-		$response = $this->mockResponse();
+    public function testFactoryStoresRequestAndResponse()
+    {
+        $request = $this->mockRequest();
+        $response = $this->mockResponse();
 
-		$factory = new ResourceFactory($request, $response);
+        $factory = new ResourceFactory($request, $response);
 
-		$this->assertSame($request, $factory->getRequest());
-		$this->assertSame($response, $factory->getResponse());
-	}
+        $this->assertSame($request, $factory->getRequest());
+        $this->assertSame($response, $factory->getResponse());
+    }
 
-	public function testAsArrayInvokesDecoder()
-	{
-		$request = $this->mockRequest();
-		$response = $this->mockResponse();
-		$client = $this->createClient();
-		$decoder = $this->createMock(DecoderInterface::class);
+    public function testAsArrayInvokesDecoder()
+    {
+        $request = $this->mockRequest();
+        $response = $this->mockResponse();
+        $client = $this->createClient();
+        $decoder = $this->createMock(DecoderInterface::class);
 
-		$factory = (new ResourceFactory($request, $response))->setClient($client);
+        $factory = (new ResourceFactory($request, $response))->setClient($client);
 
-		$client->setResourceDecoder($decoder);
+        $client->setResourceDecoder($decoder);
 
-		$decoder->method('toArray')
+        $decoder->method('toArray')
 			->with($this->identicalTo($factory))
 			->willReturn(['decoded' => true]);
 
-		$data = $factory->asArray();
+        $data = $factory->asArray();
 
-		$this->assertTrue($data['decoded']);
-	}
+        $this->assertTrue($data['decoded']);
+    }
 
-	public function testAsResourceInvokesDecoderAndReturnResource()
-	{
-		$request = $this->mockRequest();
-		$response = $this->mockResponse();
-		$client = $this->createClient();
-		$decoder = $this->createMock(DecoderInterface::class);
+    public function testAsResourceInvokesDecoderAndReturnResource()
+    {
+        $request = $this->mockRequest();
+        $response = $this->mockResponse();
+        $client = $this->createClient();
+        $decoder = $this->createMock(DecoderInterface::class);
 
-		$factory = (new ResourceFactory($request, $response))->setClient($client);
+        $factory = (new ResourceFactory($request, $response))->setClient($client);
 
-		$client->setResourceDecoder($decoder);
+        $client->setResourceDecoder($decoder);
 
-		$decoder->method('toArray')
+        $decoder->method('toArray')
 			->with($this->identicalTo($factory))
 			->willReturn(['decoded' => true]);
 
-		$resource = $factory->asResource();
+        $resource = $factory->asResource();
 
-		$this->assertInstanceOf(Resource::class, $resource);
-	}
+        $this->assertInstanceOf(Resource::class, $resource);
+    }
 
-	public function testAsResourceThrowsResourceException()
-	{
-		$request = $this->mockRequest();
-		$response = $this->mockResponse();
+    public function testAsResourceThrowsResourceException()
+    {
+        $request = $this->mockRequest();
+        $response = $this->mockResponse();
 
-		$factory = new ResourceFactory($request, $response);
+        $factory = new ResourceFactory($request, $response);
 
-		$this->expectException(ResourceException::class);
+        $this->expectException(ResourceException::class);
 
-		$factory->asResource(Object::class);
-	}
+        $factory->asResource(Object::class);
+    }
 
-	public function testAsCollectionInvokesDecoderAndReturnsCollection()
-	{
-		$request = $this->mockRequest();
-		$response = $this->mockResponse();
-		$client = $this->createClient();
-		$decoder = $this->createMock(DecoderInterface::class);
+    public function testAsCollectionInvokesDecoderAndReturnsCollection()
+    {
+        $request = $this->mockRequest();
+        $response = $this->mockResponse();
+        $client = $this->createClient();
+        $decoder = $this->createMock(DecoderInterface::class);
 
-		$factory = (new ResourceFactory($request, $response))->setClient($client);
+        $factory = (new ResourceFactory($request, $response))->setClient($client);
 
-		$client->setResourceDecoder($decoder);
+        $client->setResourceDecoder($decoder);
 
-		$decoder->method('toArray')
+        $decoder->method('toArray')
 			->with($this->identicalTo($factory))
 			->willReturn([['decoded' => true]]);
 
-		$collection = $factory->asCollection();
+        $collection = $factory->asCollection();
 
-		$this->assertInstanceOf(Collection::class, $collection);
-		$this->assertInstanceOf(Resource::class, $collection[0]);
-	}
+        $this->assertInstanceOf(Collection::class, $collection);
+        $this->assertInstanceOf(Resource::class, $collection[0]);
+    }
 
-	public function testAsCollectionThrowsResourceException()
-	{
-		$request = $this->mockRequest();
-		$response = $this->mockResponse();
+    public function testAsCollectionThrowsResourceException()
+    {
+        $request = $this->mockRequest();
+        $response = $this->mockResponse();
 
-		$factory = new ResourceFactory($request, $response);
+        $factory = new ResourceFactory($request, $response);
 
-		$this->expectException(ResourceException::class);
+        $this->expectException(ResourceException::class);
 
-		$factory->asCollection(Object::class);
-	}
+        $factory->asCollection(Object::class);
+    }
 }

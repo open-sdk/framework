@@ -8,32 +8,32 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class ResponseException extends RequestException
 {
-	/**
-	 * The response which caused this error.
-	 *
-	 * @var Response
-	 */
-	private $response;
+    /**
+     * The response which caused this error.
+     *
+     * @var Response
+     */
+    private $response;
 
-	/**
-	 * Create an error for issues after receiving a response.
-	 */
-	public function __construct(
+    /**
+     * Create an error for issues after receiving a response.
+     */
+    public function __construct(
 		string $message,
 		Request $request,
 		Response $response,
 		Throwable $previous = null
 	) {
-		parent::__construct($message, $request, $response->getStatusCode(), $previous);
+        parent::__construct($message, $request, $response->getStatusCode(), $previous);
 
-		$this->response = $response;
-	}
+        $this->response = $response;
+    }
 
-	/**
-	 * Get the response which caused this error.
-	 */
-	public function getResponse(): Response
-	{
-		return $this->response;
-	}
+    /**
+     * Get the response which caused this error.
+     */
+    public function getResponse(): Response
+    {
+        return $this->response;
+    }
 }

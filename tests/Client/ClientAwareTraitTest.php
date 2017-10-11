@@ -8,12 +8,12 @@ use OpenSdk\Framework\Tests\TestCase;
 
 class ClientAwareTraitTest extends TestCase
 {
-	public function testClientIsStored()
-	{
-		$client = $this->createMock(Client::class);
-		$aware = $this->getMockForTrait(ClientAwareTrait::class);
+    public function testClientIsStored()
+    {
+        $client = $this->createMock(Client::class);
+        $aware = $this->getMockForTrait(ClientAwareTrait::class);
 
-		$this->assertSame($aware, $aware->setClient($client));
-		$this->assertSame($client, $aware->getClient());
-	}
+        $this->assertSame($aware, $aware->setClient($client));
+        $this->assertSame($client, $aware->getClient());
+    }
 }

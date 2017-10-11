@@ -8,24 +8,24 @@ use OpenSdk\Framework\Tests\TestCase;
 
 class ResourceTest extends TestCase
 {
-	public function testIsCollection()
-	{
-		$this->assertInstanceOf(Collection::class, new Resource);
-	}
+    public function testIsCollection()
+    {
+        $this->assertInstanceOf(Collection::class, new Resource);
+    }
 
-	public function testGetReturnsKeyOrDefault()
-	{
-		$resource = new Resource(['this' => 'isset']);
+    public function testGetReturnsKeyOrDefault()
+    {
+        $resource = new Resource(['this' => 'isset']);
 
-		$this->assertSame('isset', $resource->get('this'));
-		$this->assertSame('default', $resource->get('that', 'default'));
-	}
+        $this->assertSame('isset', $resource->get('this'));
+        $this->assertSame('default', $resource->get('that', 'default'));
+    }
 
-	public function testMagicGetterReturnsKeyOrNull()
-	{
-		$resource = new Resource(['this' => 'isset']);
+    public function testMagicGetterReturnsKeyOrNull()
+    {
+        $resource = new Resource(['this' => 'isset']);
 
-		$this->assertSame('isset', $resource->this);
-		$this->assertNull($resource->that);
-	}
+        $this->assertSame('isset', $resource->this);
+        $this->assertNull($resource->that);
+    }
 }

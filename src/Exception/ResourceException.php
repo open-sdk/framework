@@ -2,8 +2,8 @@
 
 namespace OpenSdk\Framework\Exception;
 
-use Throwable;
 use OpenSdk\Framework\Resource\Factory as ResourceFactory;
+use Throwable;
 
 class ResourceException extends ResponseException
 {
@@ -16,6 +16,10 @@ class ResourceException extends ResponseException
 
 	/**
 	 * Create an error for issues during resource usage.
+	 *
+	 * @param string          $message
+	 * @param ResourceFactory $factory
+	 * @param Throwable       $previous
 	 */
 	public function __construct(
 		string $message,
@@ -32,6 +36,8 @@ class ResourceException extends ResponseException
 
 	/**
 	 * Get the resource factory which caused the error.
+	 *
+	 * @return ResourceFactory
 	 */
 	public function getFactory(): ResourceFactory
 	{

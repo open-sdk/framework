@@ -16,13 +16,18 @@ interface StackInterface extends ClientAware
 	 *
 	 * @param callable|MiddlewareInterface $middleware
 	 */
-	public function push($middleware): void;
+	public function push($middleware);
 
 	/**
 	 * Dispatch the request through all middlewares and return the response.
 	 *
 	 * The stack itself is responsible for sending the request, using the
 	 * client. Also, an empty response is provided to allow early exiting.
+	 *
+	 * @param Request  $request
+	 * @param Response $response
+	 *
+	 * @return Response
 	 */
 	public function __invoke(Request $request, Response $response): Response;
 }

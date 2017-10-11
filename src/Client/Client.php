@@ -25,7 +25,7 @@ abstract class Client extends Container
 	 *
 	 * @param MiddlewareInterface|callable $middleware
 	 */
-	public function use($middleware): void
+	public function use($middleware)
 	{
 		$this->getMiddlewareStack()->push($middleware);
 	}
@@ -33,8 +33,9 @@ abstract class Client extends Container
 	/**
 	 * Fetch the response using a prepared request and the middleware stack.
 	 *
-	 * @param  Request $request
-	 * @return Response
+	 * @param Request $request
+	 *
+	 * @return ResourceFactory
 	 */
 	public function send(Request $request)
 	{

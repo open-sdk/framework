@@ -18,6 +18,8 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 
 	/**
 	 * Create a new collection using a dataset.
+	 *
+	 * @param array $items
 	 */
 	public function __construct(array $items = [])
 	{
@@ -26,6 +28,10 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 
 	/**
 	 * Map over each collection item and return a new collection instance.
+	 *
+	 * @param callable $callback
+	 *
+	 * @return static
 	 */
 	public function map(callable $callback): self
 	{
@@ -35,6 +41,10 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 	/**
 	 * Iterate over each collection item and return the same collection instance.
 	 * Note, when the callback returns false the loop will stop.
+	 *
+	 * @param callable $callback
+	 *
+	 * @return $this
 	 */
 	public function each(callable $callback): self
 	{
@@ -49,6 +59,8 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 
 	/**
 	 * Get a PHP array representation of the resource.
+	 *
+	 * @return array
 	 */
 	public function toArray(): array
 	{
@@ -59,6 +71,8 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 	 * Get a JSON string representation of the resource.
 	 *
 	 * @param integer $options
+	 *
+	 * @return string
 	 */
 	public function toJson($options = 0): string
 	{
@@ -67,6 +81,8 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 
 	/**
 	 * @see self::toJson()
+	 *
+	 * @return string
 	 */
 	public function __toString(): string
 	{
@@ -74,7 +90,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 	}
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function offsetExists($offset)
 	{
@@ -82,7 +98,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 	}
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function offsetGet($offset)
 	{
@@ -90,7 +106,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 	}
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function offsetSet($offset, $value)
 	{
@@ -102,7 +118,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 	}
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function offsetUnset($offset)
 	{
@@ -110,7 +126,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 	}
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function count()
 	{
@@ -118,7 +134,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 	}
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function getIterator()
 	{

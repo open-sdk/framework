@@ -39,14 +39,18 @@ abstract class Container
 
 	/**
 	 * Register a new instance for transporting requests and responses.
+	 *
+	 * @param HttpClient $client
 	 */
-	public function setHttpClient(HttpClient $client): void
+	public function setHttpClient(HttpClient $client)
 	{
 		$this->httpClient = $client;
 	}
 
 	/**
 	 * Get an instance to transport requests and responses.
+	 *
+	 * @return HttpClient
 	 */
 	public function getHttpClient(): HttpClient
 	{
@@ -55,14 +59,18 @@ abstract class Container
 
 	/**
 	 * Register a new instance for making requests and responses.
+	 *
+	 * @param HttpFactory $factory
 	 */
-	public function setHttpFactory(HttpFactory $factory): void
+	public function setHttpFactory(HttpFactory $factory)
 	{
 		$this->httpFactory = $factory;
 	}
 
 	/**
 	 * Get an instance to make requests and responses.
+	 *
+	 * @return HttpFactory
 	 */
 	public function getHttpFactory(): HttpFactory
 	{
@@ -71,14 +79,18 @@ abstract class Container
 
 	/**
 	 * Register a stack to handle all requests and responses customizations.
+	 *
+	 * @param MiddlewareStack $stack
 	 */
-	public function setMiddlewareStack(MiddlewareStack $stack): void
+	public function setMiddlewareStack(MiddlewareStack $stack)
 	{
 		$this->middlewareStack = $stack->setClient($this);
 	}
 
 	/**
 	 * Get the stack to handle all requests and responses customizations.
+	 *
+	 * @return MiddlewareStack
 	 */
 	public function getMiddlewareStack(): MiddlewareStack
 	{
@@ -87,14 +99,18 @@ abstract class Container
 
 	/**
 	 * Register a new decoder to handle responses as resources.
+	 *
+	 * @param ResourceDecoder $decoder
 	 */
-	public function setResourceDecoder(ResourceDecoder $decoder): void
+	public function setResourceDecoder(ResourceDecoder $decoder)
 	{
 		$this->resourceDecoder = $decoder;
 	}
 
 	/**
 	 * Get the decoder to handle responses as resources.
+	 *
+	 * @return ResourceDecoder
 	 */
 	public function getResourceDecoder(): ResourceDecoder
 	{

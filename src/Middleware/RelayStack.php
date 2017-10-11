@@ -30,7 +30,7 @@ class RelayStack implements StackInterface
 	}
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function setClient($client)
 	{
@@ -51,9 +51,9 @@ class RelayStack implements StackInterface
 	}
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
-	public function push($middleware): void
+	public function push($middleware)
 	{
 		$client = $this->getClient();
 
@@ -65,7 +65,7 @@ class RelayStack implements StackInterface
 	}
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function __invoke(Request $request, Response $response): Response
 	{

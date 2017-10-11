@@ -13,6 +13,12 @@ class SendRequestMiddleware implements MiddlewareInterface, ClientAwareInterface
 
 	/**
 	 * Fetch the HTTP client from the SDK and use it to send the request.
+	 *
+	 * @param Request  $request
+	 * @param Response $response
+	 * @param callable $next
+	 *
+	 * @return Response
 	 */
 	public function __invoke(Request $request, Response $response, callable $next): Response
 	{

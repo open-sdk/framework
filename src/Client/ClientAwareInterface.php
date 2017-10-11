@@ -11,7 +11,8 @@ interface ClientAwareInterface
 	 * from the container. The implementing class must also return itself, or a
 	 * new instance of itself, to use as the finalized instance.
 	 *
-	 * @param  mixed $client
+	 * @param mixed $client
+	 *
 	 * @return static
 	 */
 	public function setClient($client);

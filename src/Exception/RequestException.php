@@ -2,9 +2,9 @@
 
 namespace OpenSdk\Framework\Exception;
 
+use Psr\Http\Message\RequestInterface as Request;
 use RuntimeException;
 use Throwable;
-use Psr\Http\Message\RequestInterface as Request;
 
 class RequestException extends RuntimeException implements SdkException
 {
@@ -17,6 +17,11 @@ class RequestException extends RuntimeException implements SdkException
 
 	/**
 	 * Create an error for issues after request creation, and before request creation.
+	 *
+	 * @param string    $message
+	 * @param Request   $request
+	 * @param integer   $code
+	 * @param Throwable $previous
 	 */
 	public function __construct(
 		string $message,
@@ -31,6 +36,8 @@ class RequestException extends RuntimeException implements SdkException
 
 	/**
 	 * Get the request which caused this error.
+	 *
+	 * @return Request
 	 */
 	public function getRequest(): Request
 	{

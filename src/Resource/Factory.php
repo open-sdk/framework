@@ -28,6 +28,9 @@ class Factory implements ClientAwareInterface
 
 	/**
 	 * Create a new resource factory for the executed request and the received response.
+	 *
+	 * @param Request  $request
+	 * @param Response $response
 	 */
 	public function __construct(Request $request, Response $response)
 	{
@@ -37,6 +40,8 @@ class Factory implements ClientAwareInterface
 
 	/**
 	 * Get the request which resulted in the received response.
+	 *
+	 * @return Request
 	 */
 	public function getRequest(): Request
 	{
@@ -45,6 +50,8 @@ class Factory implements ClientAwareInterface
 
 	/**
 	 * Get the received response for the executed request.
+	 *
+	 * @return Response
 	 */
 	public function getResponse(): Response
 	{
@@ -53,6 +60,8 @@ class Factory implements ClientAwareInterface
 
 	/**
 	 * Get the received response's body as simple PHP array.
+	 *
+	 * @return array
 	 */
 	public function asArray(): array
 	{
@@ -63,6 +72,11 @@ class Factory implements ClientAwareInterface
 
 	/**
 	 * Get the received response's body as resource model, with an optional custom resource type.
+	 *
+	 * @param string $resourceType
+	 *
+	 * @throws ResourceException
+	 * @return Resource
 	 */
 	public function asResource(string $resourceType = Resource::class): Resource
 	{
@@ -75,6 +89,11 @@ class Factory implements ClientAwareInterface
 
 	/**
 	 * Get the received response's body as resource collection, with an optional custom resource type.
+	 *
+	 * @param string $resourceType
+	 *
+	 * @throws ResourceException
+	 * @return Collection
 	 */
 	public function asCollection(string $resourceType = Resource::class): Collection
 	{

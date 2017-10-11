@@ -2,6 +2,7 @@
 
 namespace OpenSdk\Framework\Client;
 
+use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\UriInterface;
 
 abstract class RestClient extends Client
@@ -9,9 +10,10 @@ abstract class RestClient extends Client
 	/**
 	 * Create a new request instance, using a required method and URI and extra options.
 	 *
-	 * @param  string               $method
-	 * @param  UriInterface|string  $uri
-	 * @param  array                $options
+	 * @param string              $method
+	 * @param UriInterface|string $uri
+	 * @param array               $options
+	 *
 	 * @return RequestInterface
 	 */
 	public function createRequest(string $method, $uri, array $options = [])
@@ -28,9 +30,11 @@ abstract class RestClient extends Client
 	/**
 	 * Perform a GET request, created using the URI and options.
 	 *
-	 * @see    Client::send()
-	 * @param  string|UriInterface  $uri
-	 * @param  array                $options
+	 * @see self::send()
+	 *
+	 * @param string|UriInterface $uri
+	 * @param array               $options
+	 *
 	 * @return mixed
 	 */
 	public function get($uri, array $options = [])
@@ -43,9 +47,11 @@ abstract class RestClient extends Client
 	/**
 	 * Perform a POST request, created using the URI and options.
 	 *
-	 * @see    Client::send()
-	 * @param  string|UriInterface  $uri
-	 * @param  array                $options
+	 * @see self::send()
+	 *
+	 * @param string|UriInterface $uri
+	 * @param array               $options
+	 *
 	 * @return mixed
 	 */
 	public function post($uri, array $options = [])
@@ -58,9 +64,11 @@ abstract class RestClient extends Client
 	/**
 	 * Perform a PUT request, created using the URI and options.
 	 *
-	 * @see    Client::send()
-	 * @param  string|UriInterface  $uri
-	 * @param  array                $options
+	 * @see self::send()
+	 *
+	 * @param string|UriInterface $uri
+	 * @param array               $options
+	 *
 	 * @return mixed
 	 */
 	public function put($uri, array $options = [])
@@ -73,9 +81,11 @@ abstract class RestClient extends Client
 	/**
 	 * Perform a PATCH request, created using the URI and options.
 	 *
-	 * @see    Client::send()
-	 * @param  string|UriInterface  $uri
-	 * @param  array                $options
+	 * @see self::send()
+	 *
+	 * @param string|UriInterface $uri
+	 * @param array               $options
+	 *
 	 * @return mixed
 	 */
 	public function patch($uri, array $options = [])
@@ -88,9 +98,11 @@ abstract class RestClient extends Client
 	/**
 	 * Perform a DELETE request, created using the URI and options.
 	 *
-	 * @see    Client::send()
-	 * @param  string|UriInterface  $uri
-	 * @param  array                $options
+	 * @see self::send()
+	 *
+	 * @param string|UriInterface $uri
+	 * @param array               $options
+	 *
 	 * @return mixed
 	 */
 	public function delete($uri, array $options = [])

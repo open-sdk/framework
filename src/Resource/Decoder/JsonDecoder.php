@@ -9,7 +9,7 @@ use OpenSdk\Framework\Resource\Factory;
 class JsonDecoder implements DecoderInterface
 {
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function toArray(Factory $factory): array
 	{

@@ -12,7 +12,7 @@ trait ClientAwareTrait
 	private $client;
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function setClient($client)
 	{

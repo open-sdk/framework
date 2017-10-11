@@ -4,25 +4,31 @@ namespace OpenSdk\Framework\Tests;
 
 use OpenSdk\Framework\Client\Client;
 use OpenSdk\Framework\Resource\Factory as ResourceFactory;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\RequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
 	/**
 	 * Create a fully-mocked request instance, based on the interface.
+	 *
+	 * @return Request
 	 */
-	public function mockRequest(): RequestInterface
+	public function mockRequest(): Request
 	{
-		return $this->createMock(RequestInterface::class);
+		return $this->createMock(Request::class);
 	}
 
 	/**
 	 * Create a fully-mocked response instance, based on the interface.
+	 *
+	 * @param integer $statusCode
+	 *
+	 * @return Response
 	 */
-	public function mockResponse(int $statusCode = 200): ResponseInterface
+	public function mockResponse(int $statusCode = 200): Response
 	{
-		$response = $this->createMock(ResponseInterface::class);
+		$response = $this->createMock(Response::class);
 
 		$response->method('getStatusCode')
 			->willReturn($statusCode);
@@ -32,10 +38,15 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 
 	/**
 	 * Create a fully-mocked resource factory instance, based on the class.
+	 *
+	 * @param Request  $request
+	 * @param Response $response
+	 *
+	 * @return ResourceFactory
 	 */
 	public function mockResourceFactory(
-		RequestInterface $request = null,
-		ResponseInterface $response = null
+		Request $request = null,
+		Response $response = null
 	): ResourceFactory {
 		$factory = $this->createMock(ResourceFactory::class);
 

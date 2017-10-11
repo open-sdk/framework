@@ -67,17 +67,25 @@ class CollectionTest extends TestCase
 		$this->assertArraySubset([2, 3], $second->toArray());
 	}
 
-	public function testEarchReturnsSameCollectionAndIteratesItems()
+	public function testEarchReturnsSameCollectionAndIteratesItemsAndBreaksLoop()
 	{
-		$called = false;
-		$first = new Collection([1, 2]);
-		$second = $first->each(function ($value) use (&$called) {
-			$called = true;
+		$reachedTwo = false;
+		$reachedThree = false;
+		$first = new Collection([1, 2, 3]);
+		$second = $first->each(function ($value) use (&$reachedTwo, &$reachedThree) {
+			if ($value == 2) {
+				$reachedTwo = true;
 
-			return false;
+				return false;
+			}
+
+			if ($value == 3) {
+				$reachedThree = true;
+			}
 		});
 
-		$this->assertTrue($called);
+		$this->assertTrue($reachedTwo);
+		$this->assertFalse($reachedThree);
 		$this->assertSame($first, $second);
 	}
 }

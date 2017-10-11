@@ -8,35 +8,35 @@ use Psr\Http\Message\RequestInterface;
 
 class RestClientTest extends TestCase
 {
-	public function testCreateRequestUsesOptions()
-	{
-		$client = $this->getMockForAbstractClass(RestClient::class);
-		$options = [
+    public function testCreateRequestUsesOptions()
+    {
+        $client = $this->getMockForAbstractClass(RestClient::class);
+        $options = [
 			'headers' => ['X-Test' => 'true'],
 			'body' => 'testing',
 			'protocol' => '1.1',
 		];
 
-		$request = $client->createRequest('POST', '/my-path', $options);
+        $request = $client->createRequest('POST', '/my-path', $options);
 
-		$this->assertInstanceOf(RequestInterface::class, $request);
-		$this->assertSame('POST', $request->getMethod());
-		$this->assertSame('/my-path', $request->getRequestTarget());
-		$this->assertSame($options['headers']['X-Test'], $request->getHeaderLine('X-Test'));
-		$this->assertSame($options['body'], (string) $request->getBody());
-		$this->assertSame($options['protocol'], $request->getProtocolVersion());
-	}
+        $this->assertInstanceOf(RequestInterface::class, $request);
+        $this->assertSame('POST', $request->getMethod());
+        $this->assertSame('/my-path', $request->getRequestTarget());
+        $this->assertSame($options['headers']['X-Test'], $request->getHeaderLine('X-Test'));
+        $this->assertSame($options['body'], (string) $request->getBody());
+        $this->assertSame($options['protocol'], $request->getProtocolVersion());
+    }
 
-	public function testGetCreatesRequestAndSendsIt()
-	{
-		$request = $this->mockRequest();
-		$response = $this->mockResponse();
-		$client = $this->createPartialMock(RestClient::class, ['createRequest', 'send']);
-		$options = [
+    public function testGetCreatesRequestAndSendsIt()
+    {
+        $request = $this->mockRequest();
+        $response = $this->mockResponse();
+        $client = $this->createPartialMock(RestClient::class, ['createRequest', 'send']);
+        $options = [
 			'headers' => ['X-Test' => 'something'],
 		];
 
-		$client->expects($this->once())
+        $client->expects($this->once())
 			->method('createRequest')
 			->with(
 				$this->identicalTo('GET'),
@@ -45,24 +45,24 @@ class RestClientTest extends TestCase
 			)
 			->willReturn($request);
 
-		$client->expects($this->once())
+        $client->expects($this->once())
 			->method('send')
 			->with($this->identicalTo($request))
 			->willReturn($response);
 
-		$this->assertSame($response, $client->get('https://test.open-sdk.com/get', $options));
-	}
+        $this->assertSame($response, $client->get('https://test.open-sdk.com/get', $options));
+    }
 
-	public function testPostCreatesRequestAndSendsIt()
-	{
-		$request = $this->mockRequest();
-		$response = $this->mockResponse();
-		$client = $this->createPartialMock(RestClient::class, ['createRequest', 'send']);
-		$options = [
+    public function testPostCreatesRequestAndSendsIt()
+    {
+        $request = $this->mockRequest();
+        $response = $this->mockResponse();
+        $client = $this->createPartialMock(RestClient::class, ['createRequest', 'send']);
+        $options = [
 			'body' => 'something',
 		];
 
-		$client->expects($this->once())
+        $client->expects($this->once())
 			->method('createRequest')
 			->with(
 				$this->identicalTo('POST'),
@@ -71,24 +71,24 @@ class RestClientTest extends TestCase
 			)
 			->willReturn($request);
 
-		$client->expects($this->once())
+        $client->expects($this->once())
 			->method('send')
 			->with($this->identicalTo($request))
 			->willReturn($response);
 
-		$this->assertSame($response, $client->post('https://test.open-sdk.com/post', $options));
-	}
+        $this->assertSame($response, $client->post('https://test.open-sdk.com/post', $options));
+    }
 
-	public function testPutCreatesRequestAndSendsIt()
-	{
-		$request = $this->mockRequest();
-		$response = $this->mockResponse();
-		$client = $this->createPartialMock(RestClient::class, ['createRequest', 'send']);
-		$options = [
+    public function testPutCreatesRequestAndSendsIt()
+    {
+        $request = $this->mockRequest();
+        $response = $this->mockResponse();
+        $client = $this->createPartialMock(RestClient::class, ['createRequest', 'send']);
+        $options = [
 			'protocol' => '1.1',
 		];
 
-		$client->expects($this->once())
+        $client->expects($this->once())
 			->method('createRequest')
 			->with(
 				$this->identicalTo('PUT'),
@@ -97,21 +97,21 @@ class RestClientTest extends TestCase
 			)
 			->willReturn($request);
 
-		$client->expects($this->once())
+        $client->expects($this->once())
 			->method('send')
 			->with($this->identicalTo($request))
 			->willReturn($response);
 
-		$this->assertSame($response, $client->put('https://test.open-sdk.com/put', $options));
-	}
+        $this->assertSame($response, $client->put('https://test.open-sdk.com/put', $options));
+    }
 
-	public function testPatchCreatesRequestAndSendsIt()
-	{
-		$request = $this->mockRequest();
-		$response = $this->mockResponse();
-		$client = $this->createPartialMock(RestClient::class, ['createRequest', 'send']);
+    public function testPatchCreatesRequestAndSendsIt()
+    {
+        $request = $this->mockRequest();
+        $response = $this->mockResponse();
+        $client = $this->createPartialMock(RestClient::class, ['createRequest', 'send']);
 
-		$client->expects($this->once())
+        $client->expects($this->once())
 			->method('createRequest')
 			->with(
 				$this->identicalTo('PATCH'),
@@ -120,21 +120,21 @@ class RestClientTest extends TestCase
 			)
 			->willReturn($request);
 
-		$client->expects($this->once())
+        $client->expects($this->once())
 			->method('send')
 			->with($this->identicalTo($request))
 			->willReturn($response);
 
-		$this->assertSame($response, $client->patch('https://test.open-sdk.com/patch'));
-	}
+        $this->assertSame($response, $client->patch('https://test.open-sdk.com/patch'));
+    }
 
-	public function testDeleteCreatesRequestAndSendsIt()
-	{
-		$request = $this->mockRequest();
-		$response = $this->mockResponse();
-		$client = $this->createPartialMock(RestClient::class, ['createRequest', 'send']);
+    public function testDeleteCreatesRequestAndSendsIt()
+    {
+        $request = $this->mockRequest();
+        $response = $this->mockResponse();
+        $client = $this->createPartialMock(RestClient::class, ['createRequest', 'send']);
 
-		$client->expects($this->once())
+        $client->expects($this->once())
 			->method('createRequest')
 			->with(
 				$this->identicalTo('DELETE'),
@@ -143,11 +143,11 @@ class RestClientTest extends TestCase
 			)
 			->willReturn($request);
 
-		$client->expects($this->once())
+        $client->expects($this->once())
 			->method('send')
 			->with($this->identicalTo($request))
 			->willReturn($response);
 
-		$this->assertSame($response, $client->delete('https://test.open-sdk.com/delete'));
-	}
+        $this->assertSame($response, $client->delete('https://test.open-sdk.com/delete'));
+    }
 }

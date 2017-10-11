@@ -8,18 +8,18 @@ use OpenSdk\Framework\Tests\ExceptionTestCase;
 
 class RequestExceptionTest extends ExceptionTestCase
 {
-	public function testIsSdkException()
-	{
-		$error = new RequestException('testing', $this->mockRequest());
+    public function testIsSdkException()
+    {
+        $error = new RequestException('testing', $this->mockRequest());
 
-		$this->assertInstanceOf(SdkException::class, $error);
-	}
+        $this->assertInstanceOf(SdkException::class, $error);
+    }
 
-	public function testExceptionStoresRequest()
-	{
-		$request = $this->mockRequest();
-		$error = new RequestException('testing', $request);
+    public function testExceptionStoresRequest()
+    {
+        $request = $this->mockRequest();
+        $error = new RequestException('testing', $request);
 
-		$this->assertSame($request, $error->getRequest());
-	}
+        $this->assertSame($request, $error->getRequest());
+    }
 }

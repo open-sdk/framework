@@ -10,67 +10,67 @@ use Relay\Runner as RelayRunner;
 
 class RelayStack implements StackInterface
 {
-	use ClientAwareTrait {
+    use ClientAwareTrait {
 		setClient as setClientTrait;
 	}
 
-	/**
-	 * All registered middlewares of this stack.
-	 *
-	 * @var array
-	 */
-	private $stack = [];
+    /**
+     * All registered middlewares of this stack.
+     *
+     * @var array
+     */
+    private $stack = [];
 
-	/**
-	 * Create a new Relay PHP middleware instance, for usage in Open SDK.
-	 */
-	public function __construct()
-	{
-		$this->push(new SendRequestMiddleware);
-	}
+    /**
+     * Create a new Relay PHP middleware instance, for usage in Open SDK.
+     */
+    public function __construct()
+    {
+        $this->push(new SendRequestMiddleware);
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function setClient($client)
-	{
-		$this->setClientTrait($client);
+    /**
+     * @inheritdoc
+     */
+    public function setClient($client)
+    {
+        $this->setClientTrait($client);
 
-		$this->stack = array_map(
+        $this->stack = array_map(
 			function ($middleware) use ($client) {
-				if ($middleware instanceof ClientAwareInterface) {
-					return $middleware->setClient($client);
-				}
+			    if ($middleware instanceof ClientAwareInterface) {
+			        return $middleware->setClient($client);
+			    }
 
-				return $middleware;
+			    return $middleware;
 			},
 			$this->stack
 		);
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function push($middleware): void
-	{
-		$client = $this->getClient();
+    /**
+     * @inheritdoc
+     */
+    public function push($middleware): void
+    {
+        $client = $this->getClient();
 
-		if ($client && $middleware instanceof ClientAwareInterface) {
-			$middleware = $middleware->setClient($client);
-		}
+        if ($client && $middleware instanceof ClientAwareInterface) {
+            $middleware = $middleware->setClient($client);
+        }
 
-		array_unshift($this->stack, $middleware);
-	}
+        array_unshift($this->stack, $middleware);
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function __invoke(Request $request, Response $response): Response
-	{
-		$runner = new RelayRunner($this->stack);
+    /**
+     * @inheritdoc
+     */
+    public function __invoke(Request $request, Response $response): Response
+    {
+        $runner = new RelayRunner($this->stack);
 
-		return $runner($request, $response);
-	}
+        return $runner($request, $response);
+    }
 }

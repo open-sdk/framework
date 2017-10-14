@@ -6,7 +6,7 @@ use OpenSdk\Framework\Exception\ResourceException;
 use OpenSdk\Framework\Resource\Collection;
 use OpenSdk\Framework\Resource\DecoderInterface;
 use OpenSdk\Framework\Resource\Factory as ResourceFactory;
-use OpenSdk\Framework\Resource\Resource;
+use OpenSdk\Framework\Resource\Model;
 use OpenSdk\Framework\Tests\TestCase;
 
 class FactoryTest extends TestCase
@@ -54,7 +54,7 @@ class FactoryTest extends TestCase
 		$this->assertTrue($data['decoded']);
 	}
 
-	public function testAsResourceInvokesDecoderAndReturnResource()
+	public function testAsModelInvokesDecoderAndReturnResource()
 	{
 		$request = $this->mockRequest();
 		$response = $this->mockResponse();
@@ -69,12 +69,12 @@ class FactoryTest extends TestCase
 			->with($this->identicalTo($factory))
 			->willReturn(['decoded' => true]);
 
-		$resource = $factory->asResource();
+		$model = $factory->asModel();
 
-		$this->assertInstanceOf(Resource::class, $resource);
+		$this->assertInstanceOf(Model::class, $model);
 	}
 
-	public function testAsResourceThrowsResourceException()
+	public function testAsModelThrowsResourceException()
 	{
 		$request = $this->mockRequest();
 		$response = $this->mockResponse();
@@ -83,7 +83,7 @@ class FactoryTest extends TestCase
 
 		$this->expectException(ResourceException::class);
 
-		$factory->asResource(Object::class);
+		$factory->asModel(Object::class);
 	}
 
 	public function testAsCollectionInvokesDecoderAndReturnsCollection()
@@ -104,7 +104,7 @@ class FactoryTest extends TestCase
 		$collection = $factory->asCollection();
 
 		$this->assertInstanceOf(Collection::class, $collection);
-		$this->assertInstanceOf(Resource::class, $collection[0]);
+		$this->assertInstanceOf(Model::class, $collection[0]);
 	}
 
 	public function testAsCollectionThrowsResourceException()

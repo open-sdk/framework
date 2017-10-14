@@ -3,9 +3,9 @@
 namespace OpenSdk\Framework\Tests\Resource;
 
 use DateTime;
-use OpenSdk\Framework\Resource\Resource;
+use OpenSdk\Framework\Resource\Model;
 
-class ResourceCastStub extends Resource
+class ModelCastStub extends Model
 {
 	/**
 	 * {@inheritdoc}

@@ -15,6 +15,18 @@ class CollectionTest extends TestCase
 		$this->assertSame($items, $collection->toArray());
 	}
 
+	public function testToArrayTransformsNestedToArray()
+	{
+		$nestedItems = new Collection([1, 2]);
+		$items = new Collection(['a', $nestedItems]);
+		$expected = [
+			'a',
+			[1, 2],
+		];
+
+		$this->assertArraySubset($expected, $items->toArray());
+	}
+
 	public function testToJsonAndToStringReturnsItemsAsJson()
 	{
 		$items = ['a', 'b', 'c'];

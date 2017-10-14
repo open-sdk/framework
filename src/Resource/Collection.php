@@ -10,14 +10,14 @@ use IteratorAggregate;
 class Collection implements ArrayAccess, Countable, IteratorAggregate
 {
 	/**
-	 * All items within the collection.
+	 * All items within the resource.
 	 *
 	 * @var array
 	 */
-	private $items;
+	protected $items;
 
 	/**
-	 * Create a new collection using a dataset.
+	 * Create a new resource using a dataset.
 	 *
 	 * @param array $items
 	 */
@@ -27,7 +27,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 	}
 
 	/**
-	 * Map over each collection item and return a new collection instance.
+	 * Map over each resource items and return the result in a new instance.
 	 *
 	 * @param callable $callback
 	 *
@@ -35,11 +35,11 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 	 */
 	public function map(callable $callback): self
 	{
-		return new static(array_map($callback, $this->items));
+		return new static(array_map($callback, $this->items, array_keys($this->items)));
 	}
 
 	/**
-	 * Iterate over each collection item and return the same collection instance.
+	 * Iterate over each resource item and return this instance.
 	 * Note, when the callback returns false the loop will stop.
 	 *
 	 * @param callable $callback
@@ -58,13 +58,20 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 	}
 
 	/**
-	 * Get a PHP array representation of the resource.
+	 * Get a plain PHP array representation of the resource.
 	 *
 	 * @return array
 	 */
 	public function toArray(): array
 	{
-		return $this->items;
+		return array_map(
+			function ($value) {
+				return $value instanceof self
+					? $value->toArray()
+					: $value;
+			},
+			$this->items
+		);
 	}
 
 	/**
@@ -90,35 +97,35 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Determine if a key or property exists in this resource.
 	 */
-	public function offsetExists($offset)
+	public function offsetExists($key)
 	{
-		return array_key_exists($offset, $this->items);
+		return array_key_exists($key, $this->items);
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Get a key or property from the resource.
 	 */
-	public function offsetGet($offset)
+	public function offsetGet($key)
 	{
-		return $this->items[$offset];
+		return $this->items[$key];
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Set a value to this resource using a key, or append it.
 	 */
-	public function offsetSet($offset, $value)
+	public function offsetSet($key, $value)
 	{
-		if (is_null($offset)) {
+		if (is_null($key)) {
 			$this->items[] = $value;
 		} else {
-			$this->items[$offset] = $value;
+			$this->items[$key] = $value;
 		}
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Remove a key or property from this resource.
 	 */
 	public function offsetUnset($offset)
 	{
@@ -126,7 +133,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Count all items within the resource.
 	 */
 	public function count()
 	{
@@ -134,7 +141,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Get an iterator for this resource, allowing usage with `foreach`.
 	 */
 	public function getIterator()
 	{

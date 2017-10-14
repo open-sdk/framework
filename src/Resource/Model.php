@@ -2,7 +2,7 @@
 
 namespace OpenSdk\Framework\Resource;
 
-class Resource extends Collection
+class Model extends Collection
 {
 	/**
 	 * A map of all resource attributes and their casting type.

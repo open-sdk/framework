@@ -71,40 +71,40 @@ class Factory implements ClientAwareInterface
 	}
 
 	/**
-	 * Get the received response's body as resource model, with an optional custom resource type.
+	 * Get the received response's body as resource model, with an optional custom model type.
 	 *
 	 * @param string $resourceType
 	 *
 	 * @throws ResourceException
 	 * @return Resource
 	 */
-	public function asResource(string $resourceType = Resource::class): Resource
+	public function asModel(string $type = Model::class): Model
 	{
-		if (is_a($resourceType, Resource::class, true)) {
-			return new $resourceType($this->asArray());
+		if (is_a($type, Model::class, true)) {
+			return new $type($this->asArray());
 		}
 
-		throw new ResourceException("Class type '{$resourceType}' is not a resource class.", $this);
+		throw new ResourceException("Class type '{$type}' is not a resource model.", $this);
 	}
 
 	/**
-	 * Get the received response's body as resource collection, with an optional custom resource type.
+	 * Get the received response's body as resource collection, with an optional custom model type.
 	 *
 	 * @param string $resourceType
 	 *
 	 * @throws ResourceException
 	 * @return Collection
 	 */
-	public function asCollection(string $resourceType = Resource::class): Collection
+	public function asCollection(string $type = Model::class): Collection
 	{
-		if (is_a($resourceType, Resource::class, true)) {
+		if (is_a($type, Model::class, true)) {
 			$collection = new Collection($this->asArray());
 
-			return $collection->map(function ($item) use ($resourceType) {
-				return new $resourceType($item);
+			return $collection->map(function ($item) use ($type) {
+				return new $type($item);
 			});
 		}
 
-		throw new ResourceException("Class type '{$resourceType}' is not a resource class.", $this);
+		throw new ResourceException("Class type '{$type}' is not a resource model.", $this);
 	}
 }

@@ -73,10 +73,10 @@ class Factory implements ClientAwareInterface
 	/**
 	 * Get the received response's body as resource model, with an optional custom model type.
 	 *
-	 * @param string $resourceType
+	 * @param string $type
 	 *
 	 * @throws ResourceException
-	 * @return Resource
+	 * @return Model
 	 */
 	public function asModel(string $type = Model::class): Model
 	{
@@ -90,7 +90,7 @@ class Factory implements ClientAwareInterface
 	/**
 	 * Get the received response's body as resource collection, with an optional custom model type.
 	 *
-	 * @param string $resourceType
+	 * @param string $type
 	 *
 	 * @throws ResourceException
 	 * @return Collection

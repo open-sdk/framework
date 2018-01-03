@@ -16,46 +16,46 @@ class ModelTest extends TestCase
 
 	public function testGetReturnsKeyOrDefault()
 	{
-		$model = new Model(['this' => 'isset']);
+		$model = new ModelCastStub(['testAny' => 'isset']);
 
-		$this->assertSame('isset', $model->get('this'));
-		$this->assertSame('default', $model->get('that', 'default'));
+		$this->assertSame('isset', $model->get('testAny'));
+		$this->assertSame('default', $model->get('testNone', 'default'));
 	}
 
 	public function testMagicGetterReturnsKeyOrNull()
 	{
-		$model = new Model(['this' => 'isset']);
+		$model = new ModelCastStub(['testAny' => 'isset']);
 
-		$this->assertSame('isset', $model->this);
-		$this->assertNull($model->that);
+		$this->assertSame('isset', $model->testAny);
+		$this->assertNull($model->testNone);
 	}
 
 	public function testSetStoresValue()
 	{
-		$model = new Model;
+		$model = new ModelCastStub;
 
-		$this->assertSame($model, $model->set('this', 'isset'));
-		$this->assertSame('isset', $model->get('this'));
+		$this->assertSame($model, $model->set('testAny', 'isset'));
+		$this->assertSame('isset', $model->get('testAny'));
 	}
 
 	public function testMagicSetterStoresValue()
 	{
-		$model = new Model;
-		$model->this = 'isset';
+		$model = new ModelCastStub;
+		$model->testAny = 'isset';
 
-		$this->assertSame('isset', $model->this);
+		$this->assertSame('isset', $model->testAny);
 	}
 
-	public function testEmptyUnkownOrNonExistingClassAttributesAreNotCasted()
+	public function testEmptyUnknownOrNonExistingClassAttributesAreNotCasted()
 	{
 		$model = new ModelCastStub([
 			'testEmpty' => 'empty',
-			'testUnkown' => 'biepboep',
+			'testUnknown' => 'biepboep',
 			'testClassNotExists' => 'not-exists',
 		]);
 
 		$this->assertSame('empty', $model->testEmpty);
-		$this->assertSame('biepboep', $model->testUnkown);
+		$this->assertSame('biepboep', $model->testUnknown);
 		$this->assertSame('not-exists', $model->testClassNotExists);
 	}
 
@@ -70,12 +70,12 @@ class ModelTest extends TestCase
 			'testBooleanStringZero' => '0',
 		]);
 
-		$this->assertSame(true, $model->testBoolean);
-		$this->assertSame(false, $model->testBooleanFalse);
-		$this->assertSame(true, $model->testBooleanStringTrue);
-		$this->assertSame(false, $model->testBooleanStringFalse);
-		$this->assertSame(true, $model->testBooleanStringOne);
-		$this->assertSame(false, $model->testBooleanStringZero);
+		$this->assertTrue($model->testBoolean);
+		$this->assertFalse($model->testBooleanFalse);
+		$this->assertTrue($model->testBooleanStringTrue);
+		$this->assertFalse($model->testBooleanStringFalse);
+		$this->assertTrue($model->testBooleanStringOne);
+		$this->assertFalse($model->testBooleanStringZero);
 	}
 
 	public function testIntegerAttributesAreCasted()

@@ -48,14 +48,14 @@ class CollectionTest extends TestCase
 
 		unset($collection[3]);
 
-		$this->assertSame(3, count($collection));
+		$this->assertCount(3, $collection);
 	}
 
 	public function testCollectionIsCountable()
 	{
 		$collection = new Collection([1, 2, 3]);
 
-		$this->assertSame(3, count($collection));
+		$this->assertCount(3, $collection);
 	}
 
 	public function testCollectionIsIteratable()

@@ -4,6 +4,7 @@ namespace OpenSdk\Framework\Tests;
 
 use OpenSdk\Framework\Client\Client;
 use OpenSdk\Framework\Resource\Factory as ResourceFactory;
+use PHPUnit\Framework\MockObject\MockObject as PHPUnitMock;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
@@ -12,7 +13,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	/**
 	 * Create a fully-mocked request instance, based on the interface.
 	 *
-	 * @return Request
+	 * @return PHPUnitMock&Request
 	 */
 	public function mockRequest(): Request
 	{
@@ -24,7 +25,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	 *
 	 * @param integer $statusCode
 	 *
-	 * @return Response
+	 * @return PHPUnitMock&Response
 	 */
 	public function mockResponse(int $statusCode = 200): Response
 	{
@@ -42,7 +43,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	 * @param Request  $request
 	 * @param Response $response
 	 *
-	 * @return ResourceFactory
+	 * @return PHPUnitMock&ResourceFactory
 	 */
 	public function mockResourceFactory(
 		Request $request = null,
@@ -62,7 +63,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	/**
 	 * Create a partially mocked client instance, based on the abstract one.
 	 *
-	 * @return Client
+	 * @return PHPUnitMock&Client
 	 */
 	public function createClient(): Client
 	{

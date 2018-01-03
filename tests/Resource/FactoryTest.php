@@ -83,7 +83,7 @@ class FactoryTest extends TestCase
 
 		$this->expectException(ResourceException::class);
 
-		$factory->asModel(Object::class);
+		$factory->asModel('Unknown\Object');
 	}
 
 	public function testAsCollectionInvokesDecoderAndReturnsCollection()
@@ -116,6 +116,6 @@ class FactoryTest extends TestCase
 
 		$this->expectException(ResourceException::class);
 
-		$factory->asCollection(Object::class);
+		$factory->asCollection('Unknown\Object');
 	}
 }

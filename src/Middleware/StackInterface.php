@@ -14,7 +14,7 @@ interface StackInterface extends ClientAware
 	 * Note, a newly added middleware **MUST** be prepended instead of appended
 	 * to keep the executing middleware in the correct order.
 	 *
-	 * @param callable|MiddlewareInterface $middleware
+	 * @param MiddlewareInterface|(ClientAware&MiddlewareInterface) $middleware
 	 */
 	public function push($middleware);
 

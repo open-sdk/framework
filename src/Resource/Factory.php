@@ -76,6 +76,7 @@ class Factory implements ClientAwareInterface
 	 * @param string $type
 	 *
 	 * @throws ResourceException
+	 *
 	 * @return Model
 	 */
 	public function asModel(string $type = Model::class): Model
@@ -93,6 +94,7 @@ class Factory implements ClientAwareInterface
 	 * @param string $type
 	 *
 	 * @throws ResourceException
+	 *
 	 * @return Collection
 	 */
 	public function asCollection(string $type = Model::class): Collection

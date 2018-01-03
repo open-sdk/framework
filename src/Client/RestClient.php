@@ -11,7 +11,7 @@ abstract class RestClient extends Client
 	 * Create a new request instance, using a required method and URI and extra options.
 	 *
 	 * @param string              $method
-	 * @param UriInterface|string $uri
+	 * @param string|UriInterface $uri
 	 * @param array               $options
 	 *
 	 * @return RequestInterface

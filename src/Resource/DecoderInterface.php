@@ -9,9 +9,9 @@ interface DecoderInterface
 	/**
 	 * Decode the response of the resource factory to a PHP array.
 	 *
-	 * @throws DecoderException
-	 *
 	 * @param Factory $factory
+	 *
+	 * @throws DecoderException
 	 *
 	 * @return array
 	 */

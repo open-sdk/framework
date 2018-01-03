@@ -98,6 +98,10 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 
 	/**
 	 * Determine if a key or property exists in this resource.
+	 *
+	 * @param mixed $key
+	 *
+	 * @return boolean
 	 */
 	public function offsetExists($key)
 	{
@@ -106,6 +110,10 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 
 	/**
 	 * Get a key or property from the resource.
+	 *
+	 * @param mixed $key
+	 *
+	 * @return mixed
 	 */
 	public function offsetGet($key)
 	{
@@ -114,6 +122,9 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 
 	/**
 	 * Set a value to this resource using a key, or append it.
+	 *
+	 * @param mixed $key
+	 * @param mixed $value
 	 */
 	public function offsetSet($key, $value)
 	{
@@ -126,6 +137,8 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 
 	/**
 	 * Remove a key or property from this resource.
+	 *
+	 * @param mixed $offset
 	 */
 	public function offsetUnset($offset)
 	{
@@ -134,6 +147,8 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 
 	/**
 	 * Count all items within the resource.
+	 *
+	 * @return integer
 	 */
 	public function count()
 	{
@@ -142,6 +157,8 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
 
 	/**
 	 * Get an iterator for this resource, allowing usage with `foreach`.
+	 *
+	 * @return ArrayIterator
 	 */
 	public function getIterator()
 	{

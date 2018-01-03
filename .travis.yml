@@ -20,7 +20,9 @@ install:
   - travis_retry composer update --prefer-dist --no-interaction --ignore-platform-reqs
 
 script:
+  - vendor/bin/phpcs
   - vendor/bin/phpunit --coverage-text
+  - vendor/bin/phpstan analyse --level 4 --configuration phpstan.neon src tests
 
 after_script:
   - vendor/bin/codacycoverage clover report/clover.xml

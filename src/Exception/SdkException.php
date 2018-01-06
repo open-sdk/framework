@@ -2,7 +2,7 @@
 
 namespace OpenSdk\Exception;
 
-interface SdkException
+interface SdkException extends \Throwable
 {
 	//
 }

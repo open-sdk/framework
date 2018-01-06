@@ -11,6 +11,16 @@ use OpenSdk\Tests\TestCase;
 
 class ContainerTest extends TestCase
 {
+	public function testConstructsDefaultImplementations()
+	{
+		$container = $this->getMockForAbstractClass(Container::class);
+
+		$this->assertNotEmpty($container->getHttpClient());
+		$this->assertNotEmpty($container->getHttpFactory());
+		$this->assertNotEmpty($container->getMiddlewareStack());
+		$this->assertNotEmpty($container->getResourceDecoder());
+	}
+
 	public function testHttpClientIsStored()
 	{
 		$client = $this->createMock(HttpClient::class);

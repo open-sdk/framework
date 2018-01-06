@@ -11,16 +11,6 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class ClientTest extends TestCase
 {
-	public function testClientConstructsDefaultImplementations()
-	{
-		$client = $this->getMockForAbstractClass(Client::class);
-
-		$this->assertNotEmpty($client->getHttpClient());
-		$this->assertNotEmpty($client->getHttpFactory());
-		$this->assertNotEmpty($client->getMiddlewareStack());
-		$this->assertNotEmpty($client->getResourceDecoder());
-	}
-
 	public function testUsePushesMiddlewareToStack()
 	{
 		$middleware = $this->createMock(Middleware::class);

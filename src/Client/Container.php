@@ -38,6 +38,17 @@ abstract class Container
 	private $resourceDecoder;
 
 	/**
+	 * Create a new container with the default implementations.
+	 */
+	public function __construct()
+	{
+		$this->setHttpClient(new \Http\Adapter\Guzzle6\Client);
+		$this->setHttpFactory(new \Http\Message\MessageFactory\GuzzleMessageFactory);
+		$this->setMiddlewareStack(new \OpenSdk\Middleware\Stack\Relay);
+		$this->setResourceDecoder(new \OpenSdk\Resource\Decoder\Json);
+	}
+
+	/**
 	 * Register a new instance for transporting requests and responses.
 	 *
 	 * @param HttpClient $client

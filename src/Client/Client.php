@@ -9,6 +9,33 @@ use Psr\Http\Message\RequestInterface as Request;
 abstract class Client extends Container
 {
 	/**
+	 * The application information.
+	 *
+	 * @var Application
+	 */
+	private $application;
+
+	/**
+	 * Set the application's information.
+	 *
+	 * @param Application $application
+	 */
+	public function setApplication(Application $application)
+	{
+		$this->application = $application;
+	}
+
+	/**
+	 * Get the application information, if set.
+	 *
+	 * @return Application|null
+	 */
+	public function getApplication()
+	{
+		return $this->application;
+	}
+
+	/**
 	 * Add a new middleware to the stack.
 	 *
 	 * @param Middleware|callable $middleware

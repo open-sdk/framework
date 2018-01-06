@@ -2,6 +2,7 @@
 
 namespace OpenSdk\Tests\Client;
 
+use OpenSdk\Client\Application;
 use OpenSdk\Client\Client;
 use OpenSdk\Middleware\Middleware;
 use OpenSdk\Middleware\Stack;
@@ -11,6 +12,24 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class ClientTest extends TestCase
 {
+	public function testApplicationIsStored()
+	{
+		$app = $this->createMock(Application::class);
+		$client = $this->getMockForAbstractClass(Client::class);
+
+		$client->setApplication($app);
+
+		$this->assertSame($app, $client->getApplication());
+	}
+
+	public function testApplicationIsNullByDefault()
+	{
+		$this->assertNull(
+			$this->getMockForAbstractClass(Client::class)
+				->getApplication()
+		);
+	}
+
 	public function testUsePushesMiddlewareToStack()
 	{
 		$middleware = $this->createMock(Middleware::class);

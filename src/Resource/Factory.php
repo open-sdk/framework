@@ -2,13 +2,13 @@
 
 namespace OpenSdk\Resource;
 
-use OpenSdk\Client\ClientAwareInterface;
+use OpenSdk\Client\ClientAware;
 use OpenSdk\Client\ClientAwareTrait;
 use OpenSdk\Exception\ResourceException;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class Factory implements ClientAwareInterface
+class Factory implements ClientAware
 {
 	use ClientAwareTrait;
 

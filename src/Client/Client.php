@@ -2,7 +2,7 @@
 
 namespace OpenSdk\Client;
 
-use OpenSdk\Middleware\MiddlewareInterface;
+use OpenSdk\Middleware\Middleware;
 use OpenSdk\Resource\Factory as ResourceFactory;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\RequestInterface as Response;
@@ -16,14 +16,14 @@ abstract class Client extends Container
 	{
 		$this->setHttpClient(new \Http\Adapter\Guzzle6\Client);
 		$this->setHttpFactory(new \Http\Message\MessageFactory\GuzzleMessageFactory);
-		$this->setMiddlewareStack(new \OpenSdk\Middleware\Stack\RelayStack);
-		$this->setResourceDecoder(new \OpenSdk\Resource\Decoder\JsonDecoder);
+		$this->setMiddlewareStack(new \OpenSdk\Middleware\Stack\Relay);
+		$this->setResourceDecoder(new \OpenSdk\Resource\Decoder\Json);
 	}
 
 	/**
 	 * Add a new middleware to the stack.
 	 *
-	 * @param MiddlewareInterface|callable $middleware
+	 * @param Middleware|callable $middleware
 	 */
 	public function use($middleware)
 	{

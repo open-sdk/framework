@@ -4,8 +4,7 @@ namespace OpenSdk\Tests\Exception;
 
 use OpenSdk\Exception\DecoderException;
 use OpenSdk\Exception\SdkException;
-use OpenSdk\Resource\DecoderInterface;
-use OpenSdk\Resource\Factory as ResourceFactory;
+use OpenSdk\Resource\Decoder;
 use OpenSdk\Tests\ExceptionTestCase;
 
 class DecoderExceptionTest extends ExceptionTestCase
@@ -13,7 +12,7 @@ class DecoderExceptionTest extends ExceptionTestCase
 	public function testIsSdkException()
 	{
 		$factory = $this->mockResourceFactory();
-		$decoder = $this->createMock(DecoderInterface::class);
+		$decoder = $this->createMock(Decoder::class);
 
 		$error = new DecoderException('testing', $decoder, $factory);
 
@@ -25,7 +24,7 @@ class DecoderExceptionTest extends ExceptionTestCase
 		$request = $this->mockRequest();
 		$response = $this->mockResponse();
 		$factory = $this->mockResourceFactory($request, $response);
-		$decoder = $this->createMock(DecoderInterface::class);
+		$decoder = $this->createMock(Decoder::class);
 
 		$error = new DecoderException('testing', $decoder, $factory);
 
@@ -40,7 +39,7 @@ class DecoderExceptionTest extends ExceptionTestCase
 		$request = $this->mockRequest();
 		$response = $this->mockResponse(404);
 		$factory = $this->mockResourceFactory($request, $response);
-		$decoder = $this->createMock(DecoderInterface::class);
+		$decoder = $this->createMock(Decoder::class);
 
 		$error = new DecoderException('testing', $decoder, $factory);
 

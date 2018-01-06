@@ -4,8 +4,8 @@ namespace OpenSdk\Client;
 
 use Http\Client\HttpClient;
 use Http\Message\MessageFactory as HttpFactory;
-use OpenSdk\Middleware\StackInterface as MiddlewareStack;
-use OpenSdk\Resource\DecoderInterface as ResourceDecoder;
+use OpenSdk\Middleware\Stack as MiddlewareStack;
+use OpenSdk\Resource\Decoder as ResourceDecoder;
 
 abstract class Container
 {

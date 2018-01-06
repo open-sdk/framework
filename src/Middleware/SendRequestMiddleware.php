@@ -2,12 +2,12 @@
 
 namespace OpenSdk\Middleware;
 
-use OpenSdk\Client\ClientAwareInterface;
+use OpenSdk\Client\ClientAware;
 use OpenSdk\Client\ClientAwareTrait;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class SendRequestMiddleware implements MiddlewareInterface, ClientAwareInterface
+class SendRequestMiddleware implements Middleware, ClientAware
 {
 	use ClientAwareTrait;
 

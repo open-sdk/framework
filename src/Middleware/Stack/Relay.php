@@ -2,15 +2,15 @@
 
 namespace OpenSdk\Middleware\Stack;
 
-use OpenSdk\Client\ClientAwareInterface;
+use OpenSdk\Client\ClientAware;
 use OpenSdk\Client\ClientAwareTrait;
 use OpenSdk\Middleware\SendRequestMiddleware;
-use OpenSdk\Middleware\StackInterface;
+use OpenSdk\Middleware\Stack;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Relay\Runner as RelayRunner;
 
-class RelayStack implements StackInterface
+class Relay implements Stack
 {
 	use ClientAwareTrait {
 		setClient as setClientTrait;
@@ -40,7 +40,7 @@ class RelayStack implements StackInterface
 
 		$this->stack = array_map(
 			function ($middleware) use ($client) {
-				if ($middleware instanceof ClientAwareInterface) {
+				if ($middleware instanceof ClientAware) {
 					return $middleware->setClient($client);
 				}
 
@@ -59,7 +59,7 @@ class RelayStack implements StackInterface
 	{
 		$client = $this->getClient();
 
-		if ($client && $middleware instanceof ClientAwareInterface) {
+		if ($client && $middleware instanceof ClientAware) {
 			$middleware = $middleware->setClient($client);
 		}
 

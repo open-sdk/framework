@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenSdk\Framework\Exception;
+namespace OpenSdk\Exception;
 
 interface SdkException
 {

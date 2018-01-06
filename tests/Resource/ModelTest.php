@@ -1,11 +1,11 @@
 <?php
 
-namespace OpenSdk\Framework\Tests\Resource;
+namespace OpenSdk\Tests\Resource;
 
 use DateTime;
-use OpenSdk\Framework\Resource\Collection;
-use OpenSdk\Framework\Resource\Model;
-use OpenSdk\Framework\Tests\TestCase;
+use OpenSdk\Resource\Collection;
+use OpenSdk\Resource\Model;
+use OpenSdk\Tests\TestCase;
 
 class ModelTest extends TestCase
 {

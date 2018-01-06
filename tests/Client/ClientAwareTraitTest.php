@@ -1,10 +1,10 @@
 <?php
 
-namespace OpenSdk\Framework\Tests\Client;
+namespace OpenSdk\Tests\Client;
 
-use OpenSdk\Framework\Client\Client;
-use OpenSdk\Framework\Client\ClientAwareTrait;
-use OpenSdk\Framework\Tests\TestCase;
+use OpenSdk\Client\Client;
+use OpenSdk\Client\ClientAwareTrait;
+use OpenSdk\Tests\TestCase;
 use PHPUnit\Framework\MockObject\MockObject as PHPUnitMock;
 
 class ClientAwareTraitTest extends TestCase

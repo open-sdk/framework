@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenSdk\Framework\Client;
+namespace OpenSdk\Client;
 
 interface ClientAwareInterface
 {

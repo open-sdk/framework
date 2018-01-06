@@ -1,10 +1,10 @@
 <?php
 
-namespace OpenSdk\Framework\Tests\Resource\Decoder;
+namespace OpenSdk\Tests\Resource\Decoder;
 
-use OpenSdk\Framework\Exception\DecoderException;
-use OpenSdk\Framework\Resource\Decoder\JsonDecoder;
-use OpenSdk\Framework\Tests\TestCase;
+use OpenSdk\Exception\DecoderException;
+use OpenSdk\Resource\Decoder\JsonDecoder;
+use OpenSdk\Tests\TestCase;
 use Psr\Http\Message\StreamInterface;
 
 class JsonDecoderTest extends TestCase

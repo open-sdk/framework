@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenSdk\Framework\Resource;
+namespace OpenSdk\Resource;
 
 use ArrayAccess;
 use ArrayIterator;

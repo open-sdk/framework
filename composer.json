@@ -36,12 +36,12 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"OpenSdk\\Framework\\": "src/"
+			"OpenSdk\\": "src/"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"OpenSdk\\Framework\\Tests\\": "tests/"
+			"OpenSdk\\Tests\\": "tests/"
 		}
 	},
 	"scripts": {

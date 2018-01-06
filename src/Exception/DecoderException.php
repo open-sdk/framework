@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenSdk\Framework\Exception;
+namespace OpenSdk\Exception;
 
-use OpenSdk\Framework\Resource\DecoderInterface as ResourceDecoder;
-use OpenSdk\Framework\Resource\Factory as ResourceFactory;
+use OpenSdk\Resource\DecoderInterface as ResourceDecoder;
+use OpenSdk\Resource\Factory as ResourceFactory;
 use Throwable;
 
 class DecoderException extends ResourceException

@@ -1,13 +1,13 @@
 <?php
 
-namespace OpenSdk\Framework\Tests\Resource;
+namespace OpenSdk\Tests\Resource;
 
-use OpenSdk\Framework\Exception\ResourceException;
-use OpenSdk\Framework\Resource\Collection;
-use OpenSdk\Framework\Resource\DecoderInterface;
-use OpenSdk\Framework\Resource\Factory as ResourceFactory;
-use OpenSdk\Framework\Resource\Model;
-use OpenSdk\Framework\Tests\TestCase;
+use OpenSdk\Exception\ResourceException;
+use OpenSdk\Resource\Collection;
+use OpenSdk\Resource\DecoderInterface;
+use OpenSdk\Resource\Factory as ResourceFactory;
+use OpenSdk\Resource\Model;
+use OpenSdk\Tests\TestCase;
 
 class FactoryTest extends TestCase
 {

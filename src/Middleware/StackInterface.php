@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenSdk\Framework\Middleware;
+namespace OpenSdk\Middleware;
 
-use OpenSdk\Framework\Client\ClientAwareInterface as ClientAware;
+use OpenSdk\Client\ClientAwareInterface as ClientAware;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 

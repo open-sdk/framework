@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenSdk\Framework\Client;
+namespace OpenSdk\Client;
 
-use OpenSdk\Framework\Middleware\MiddlewareInterface;
-use OpenSdk\Framework\Resource\Factory as ResourceFactory;
+use OpenSdk\Middleware\MiddlewareInterface;
+use OpenSdk\Resource\Factory as ResourceFactory;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\RequestInterface as Response;
 
@@ -16,8 +16,8 @@ abstract class Client extends Container
 	{
 		$this->setHttpClient(new \Http\Adapter\Guzzle6\Client);
 		$this->setHttpFactory(new \Http\Message\MessageFactory\GuzzleMessageFactory);
-		$this->setMiddlewareStack(new \OpenSdk\Framework\Middleware\RelayStack);
-		$this->setResourceDecoder(new \OpenSdk\Framework\Resource\Decoder\JsonDecoder);
+		$this->setMiddlewareStack(new \OpenSdk\Middleware\RelayStack);
+		$this->setResourceDecoder(new \OpenSdk\Resource\Decoder\JsonDecoder);
 	}
 
 	/**

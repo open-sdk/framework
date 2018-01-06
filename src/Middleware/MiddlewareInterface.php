@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenSdk\Framework\Middleware;
+namespace OpenSdk\Middleware;
 
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;

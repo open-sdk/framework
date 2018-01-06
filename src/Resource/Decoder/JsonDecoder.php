@@ -1,10 +1,10 @@
 <?php
 
-namespace OpenSdk\Framework\Resource\Decoder;
+namespace OpenSdk\Resource\Decoder;
 
-use OpenSdk\Framework\Exception\DecoderException;
-use OpenSdk\Framework\Resource\DecoderInterface;
-use OpenSdk\Framework\Resource\Factory;
+use OpenSdk\Exception\DecoderException;
+use OpenSdk\Resource\DecoderInterface;
+use OpenSdk\Resource\Factory;
 
 class JsonDecoder implements DecoderInterface
 {

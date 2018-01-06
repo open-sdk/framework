@@ -1,10 +1,10 @@
 <?php
 
-namespace OpenSdk\Framework\Tests\Exception;
+namespace OpenSdk\Tests\Exception;
 
-use OpenSdk\Framework\Exception\ResponseException;
-use OpenSdk\Framework\Exception\SdkException;
-use OpenSdk\Framework\Tests\ExceptionTestCase;
+use OpenSdk\Exception\ResponseException;
+use OpenSdk\Exception\SdkException;
+use OpenSdk\Tests\ExceptionTestCase;
 
 class ResponseExceptionTest extends ExceptionTestCase
 {

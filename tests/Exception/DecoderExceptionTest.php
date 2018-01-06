@@ -1,12 +1,12 @@
 <?php
 
-namespace OpenSdk\Framework\Tests\Exception;
+namespace OpenSdk\Tests\Exception;
 
-use OpenSdk\Framework\Exception\DecoderException;
-use OpenSdk\Framework\Exception\SdkException;
-use OpenSdk\Framework\Resource\DecoderInterface;
-use OpenSdk\Framework\Resource\Factory as ResourceFactory;
-use OpenSdk\Framework\Tests\ExceptionTestCase;
+use OpenSdk\Exception\DecoderException;
+use OpenSdk\Exception\SdkException;
+use OpenSdk\Resource\DecoderInterface;
+use OpenSdk\Resource\Factory as ResourceFactory;
+use OpenSdk\Tests\ExceptionTestCase;
 
 class DecoderExceptionTest extends ExceptionTestCase
 {

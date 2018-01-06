@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenSdk\Framework\Resource;
+namespace OpenSdk\Resource;
 
-use OpenSdk\Framework\Exception\DecoderException;
+use OpenSdk\Exception\DecoderException;
 
 interface DecoderInterface
 {

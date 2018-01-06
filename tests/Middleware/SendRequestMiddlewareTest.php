@@ -1,11 +1,11 @@
 <?php
 
-namespace OpenSdk\Framework\Tests\Middleware;
+namespace OpenSdk\Tests\Middleware;
 
 use Http\Client\HttpClient;
-use OpenSdk\Framework\Middleware\MiddlewareInterface;
-use OpenSdk\Framework\Middleware\SendRequestMiddleware;
-use OpenSdk\Framework\Tests\TestCase;
+use OpenSdk\Middleware\MiddlewareInterface;
+use OpenSdk\Middleware\SendRequestMiddleware;
+use OpenSdk\Tests\TestCase;
 
 class SendRequestMiddlewareTest extends TestCase
 {

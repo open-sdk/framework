@@ -1,10 +1,10 @@
 <?php
 
-namespace OpenSdk\Framework\Resource;
+namespace OpenSdk\Resource;
 
-use OpenSdk\Framework\Client\ClientAwareInterface;
-use OpenSdk\Framework\Client\ClientAwareTrait;
-use OpenSdk\Framework\Exception\ResourceException;
+use OpenSdk\Client\ClientAwareInterface;
+use OpenSdk\Client\ClientAwareTrait;
+use OpenSdk\Exception\ResourceException;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 

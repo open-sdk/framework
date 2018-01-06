@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenSdk\Framework\Tests;
+namespace OpenSdk\Tests;
 
-use OpenSdk\Framework\Client\Client;
-use OpenSdk\Framework\Resource\Factory as ResourceFactory;
+use OpenSdk\Client\Client;
+use OpenSdk\Resource\Factory as ResourceFactory;
 use PHPUnit\Framework\MockObject\MockObject as PHPUnitMock;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;

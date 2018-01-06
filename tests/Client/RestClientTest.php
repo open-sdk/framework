@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenSdk\Framework\Tests\Client;
+namespace OpenSdk\Tests\Client;
 
-use OpenSdk\Framework\Client\RestClient;
-use OpenSdk\Framework\Tests\TestCase;
+use OpenSdk\Client\RestClient;
+use OpenSdk\Tests\TestCase;
 use Psr\Http\Message\RequestInterface;
 
 class RestClientTest extends TestCase

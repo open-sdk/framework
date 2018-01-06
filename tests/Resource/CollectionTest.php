@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenSdk\Framework\Tests\Resource;
+namespace OpenSdk\Tests\Resource;
 
-use OpenSdk\Framework\Resource\Collection;
-use OpenSdk\Framework\Tests\TestCase;
+use OpenSdk\Resource\Collection;
+use OpenSdk\Tests\TestCase;
 
 class CollectionTest extends TestCase
 {

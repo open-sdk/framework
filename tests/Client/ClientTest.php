@@ -1,12 +1,12 @@
 <?php
 
-namespace OpenSdk\Framework\Tests\Client;
+namespace OpenSdk\Tests\Client;
 
-use OpenSdk\Framework\Client\Client;
-use OpenSdk\Framework\Middleware\MiddlewareInterface;
-use OpenSdk\Framework\Middleware\StackInterface;
-use OpenSdk\Framework\Resource\Factory as ResourceFactory;
-use OpenSdk\Framework\Tests\TestCase;
+use OpenSdk\Client\Client;
+use OpenSdk\Middleware\MiddlewareInterface;
+use OpenSdk\Middleware\StackInterface;
+use OpenSdk\Resource\Factory as ResourceFactory;
+use OpenSdk\Tests\TestCase;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 

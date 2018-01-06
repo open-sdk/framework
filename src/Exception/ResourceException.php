@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenSdk\Framework\Exception;
+namespace OpenSdk\Exception;
 
-use OpenSdk\Framework\Resource\Factory as ResourceFactory;
+use OpenSdk\Resource\Factory as ResourceFactory;
 use Throwable;
 
 class ResourceException extends ResponseException

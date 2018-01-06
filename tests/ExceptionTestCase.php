@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenSdk\Framework\Tests;
+namespace OpenSdk\Tests;
 
-use OpenSdk\Framework\Exception\SdkException;
+use OpenSdk\Exception\SdkException;
 
 abstract class ExceptionTestCase extends TestCase
 {

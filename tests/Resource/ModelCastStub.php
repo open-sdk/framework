@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenSdk\Framework\Tests\Resource;
+namespace OpenSdk\Tests\Resource;
 
 use DateTime;
-use OpenSdk\Framework\Resource\Model;
+use OpenSdk\Resource\Model;
 
 /**
  * @property mixed $testAny

@@ -1,13 +1,13 @@
 <?php
 
-namespace OpenSdk\Framework\Tests\Client;
+namespace OpenSdk\Tests\Client;
 
 use Http\Client\HttpClient;
 use Http\Message\MessageFactory as HttpFactory;
-use OpenSdk\Framework\Client\Container;
-use OpenSdk\Framework\Middleware\StackInterface as MiddlewareStack;
-use OpenSdk\Framework\Resource\DecoderInterface as ResourceDecoder;
-use OpenSdk\Framework\Tests\TestCase;
+use OpenSdk\Client\Container;
+use OpenSdk\Middleware\StackInterface as MiddlewareStack;
+use OpenSdk\Resource\DecoderInterface as ResourceDecoder;
+use OpenSdk\Tests\TestCase;
 
 class ContainerTest extends TestCase
 {

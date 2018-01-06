@@ -1,11 +1,11 @@
 <?php
 
-namespace OpenSdk\Tests\Middleware;
+namespace OpenSdk\Tests\Middleware\Stack;
 
 use Http\Client\HttpClient;
 use OpenSdk\Client\ClientAwareInterface;
 use OpenSdk\Middleware\MiddlewareInterface;
-use OpenSdk\Middleware\RelayStack;
+use OpenSdk\Middleware\Stack\RelayStack;
 use OpenSdk\Tests\TestCase;
 
 class RelayStackTest extends TestCase

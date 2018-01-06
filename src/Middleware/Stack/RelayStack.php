@@ -1,9 +1,11 @@
 <?php
 
-namespace OpenSdk\Middleware;
+namespace OpenSdk\Middleware\Stack;
 
 use OpenSdk\Client\ClientAwareInterface;
 use OpenSdk\Client\ClientAwareTrait;
+use OpenSdk\Middleware\SendRequestMiddleware;
+use OpenSdk\Middleware\StackInterface;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Relay\Runner as RelayRunner;

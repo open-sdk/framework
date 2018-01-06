@@ -16,7 +16,7 @@ abstract class Client extends Container
 	{
 		$this->setHttpClient(new \Http\Adapter\Guzzle6\Client);
 		$this->setHttpFactory(new \Http\Message\MessageFactory\GuzzleMessageFactory);
-		$this->setMiddlewareStack(new \OpenSdk\Middleware\RelayStack);
+		$this->setMiddlewareStack(new \OpenSdk\Middleware\Stack\RelayStack);
 		$this->setResourceDecoder(new \OpenSdk\Resource\Decoder\JsonDecoder);
 	}
 

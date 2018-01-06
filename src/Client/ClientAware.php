@@ -2,7 +2,7 @@
 
 namespace OpenSdk\Client;
 
-interface ClientAwareInterface
+interface ClientAware
 {
 	/**
 	 * Provide a reference to the SDK client instance.

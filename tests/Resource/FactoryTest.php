@@ -4,7 +4,7 @@ namespace OpenSdk\Tests\Resource;
 
 use OpenSdk\Exception\ResourceException;
 use OpenSdk\Resource\Collection;
-use OpenSdk\Resource\DecoderInterface;
+use OpenSdk\Resource\Decoder;
 use OpenSdk\Resource\Factory as ResourceFactory;
 use OpenSdk\Resource\Model;
 use OpenSdk\Tests\TestCase;
@@ -39,7 +39,7 @@ class FactoryTest extends TestCase
 		$request = $this->mockRequest();
 		$response = $this->mockResponse();
 		$client = $this->createClient();
-		$decoder = $this->createMock(DecoderInterface::class);
+		$decoder = $this->createMock(Decoder::class);
 
 		$factory = (new ResourceFactory($request, $response))->setClient($client);
 
@@ -59,7 +59,7 @@ class FactoryTest extends TestCase
 		$request = $this->mockRequest();
 		$response = $this->mockResponse();
 		$client = $this->createClient();
-		$decoder = $this->createMock(DecoderInterface::class);
+		$decoder = $this->createMock(Decoder::class);
 
 		$factory = (new ResourceFactory($request, $response))->setClient($client);
 
@@ -91,7 +91,7 @@ class FactoryTest extends TestCase
 		$request = $this->mockRequest();
 		$response = $this->mockResponse();
 		$client = $this->createClient();
-		$decoder = $this->createMock(DecoderInterface::class);
+		$decoder = $this->createMock(Decoder::class);
 
 		$factory = (new ResourceFactory($request, $response))->setClient($client);
 

@@ -4,7 +4,7 @@ namespace OpenSdk\Resource;
 
 use OpenSdk\Exception\DecoderException;
 
-interface DecoderInterface
+interface Decoder
 {
 	/**
 	 * Decode the response of the resource factory to a PHP array.

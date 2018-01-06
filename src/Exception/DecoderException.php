@@ -2,7 +2,7 @@
 
 namespace OpenSdk\Exception;
 
-use OpenSdk\Resource\DecoderInterface as ResourceDecoder;
+use OpenSdk\Resource\Decoder as ResourceDecoder;
 use OpenSdk\Resource\Factory as ResourceFactory;
 use Throwable;
 

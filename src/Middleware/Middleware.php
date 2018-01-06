@@ -5,7 +5,7 @@ namespace OpenSdk\Middleware;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-interface MiddlewareInterface
+interface Middleware
 {
 	/**
 	 * Handle the outgoing request and return the response as the outcome.

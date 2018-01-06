@@ -3,18 +3,18 @@
 namespace OpenSdk\Tests\Resource\Decoder;
 
 use OpenSdk\Exception\DecoderException;
-use OpenSdk\Resource\Decoder\JsonDecoder;
+use OpenSdk\Resource\Decoder\Json as JsonDecoder;
 use OpenSdk\Tests\TestCase;
-use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\StreamInterface as Stream;
 
-class JsonDecoderTest extends TestCase
+class JsonTest extends TestCase
 {
 	public function testDecoderReturnsDecodedJson()
 	{
 		$request = $this->mockRequest();
 		$response = $this->mockResponse();
 		$factory = $this->mockResourceFactory($request, $response);
-		$stream = $this->createMock(StreamInterface::class);
+		$stream = $this->createMock(Stream::class);
 		$json = json_encode(['testing' => true]);
 
 		$response->method('getBody')
@@ -33,7 +33,7 @@ class JsonDecoderTest extends TestCase
 		$request = $this->mockRequest();
 		$response = $this->mockResponse();
 		$factory = $this->mockResourceFactory($request, $response);
-		$stream = $this->createMock(StreamInterface::class);
+		$stream = $this->createMock(Stream::class);
 
 		$response->method('getBody')
 			->willReturn($stream);

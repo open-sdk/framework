@@ -3,12 +3,12 @@
 namespace OpenSdk\Tests\Middleware\Stack;
 
 use Http\Client\HttpClient;
-use OpenSdk\Client\ClientAwareInterface;
-use OpenSdk\Middleware\MiddlewareInterface;
-use OpenSdk\Middleware\Stack\RelayStack;
+use OpenSdk\Client\ClientAware;
+use OpenSdk\Middleware\Middleware;
+use OpenSdk\Middleware\Stack\Relay as RelayStack;
 use OpenSdk\Tests\TestCase;
 
-class RelayStackTest extends TestCase
+class RelayTest extends TestCase
 {
 	public function testStackStoresClient()
 	{
@@ -22,7 +22,7 @@ class RelayStackTest extends TestCase
 	public function testStackPassesClientInRetrospect()
 	{
 		$client = $this->createClient();
-		$aware = $this->createMock(ClientAwareInterface::class);
+		$aware = $this->createMock(ClientAware::class);
 
 		$aware->expects($this->once())
 			->method('setClient')
@@ -35,14 +35,14 @@ class RelayStackTest extends TestCase
 
 	public function testStackPushesMiddleware()
 	{
-		$middleware = $this->createMock(MiddlewareInterface::class);
+		$middleware = $this->createMock(Middleware::class);
 
 		$this->assertEmpty((new RelayStack)->push($middleware));
 	}
 
 	public function testStackPushesClientAware()
 	{
-		$aware = $this->createMock(ClientAwareInterface::class);
+		$aware = $this->createMock(ClientAware::class);
 		$aware->expects($this->never())
 			->method('setClient');
 
@@ -52,7 +52,7 @@ class RelayStackTest extends TestCase
 	public function testStackPushesClientAwareAndPassesClient()
 	{
 		$client = $this->createClient();
-		$aware = $this->createMock(ClientAwareInterface::class);
+		$aware = $this->createMock(ClientAware::class);
 
 		$aware->expects($this->once())
 			->method('setClient')

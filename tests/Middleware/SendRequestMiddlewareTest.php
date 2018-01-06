@@ -3,12 +3,19 @@
 namespace OpenSdk\Tests\Middleware;
 
 use Http\Client\HttpClient;
-use OpenSdk\Middleware\MiddlewareInterface;
+use OpenSdk\Middleware\Middleware;
 use OpenSdk\Middleware\SendRequestMiddleware;
 use OpenSdk\Tests\TestCase;
 
 class SendRequestMiddlewareTest extends TestCase
 {
+	public function testImplementsMiddlewareInterface()
+	{
+		$this->assertTrue(
+			is_subclass_of(SendRequestMiddleware::class, Middleware::class)
+		);
+	}
+
 	public function testStoresClient()
 	{
 		$client = $this->createClient();

@@ -3,10 +3,10 @@
 namespace OpenSdk\Resource\Decoder;
 
 use OpenSdk\Exception\DecoderException;
-use OpenSdk\Resource\DecoderInterface;
+use OpenSdk\Resource\Decoder;
 use OpenSdk\Resource\Factory;
 
-class JsonDecoder implements DecoderInterface
+class Json implements Decoder
 {
 	/**
 	 * {@inheritdoc}

@@ -3,12 +3,11 @@
 namespace OpenSdk\Tests\Client;
 
 use OpenSdk\Client\Client;
-use OpenSdk\Middleware\MiddlewareInterface;
-use OpenSdk\Middleware\StackInterface;
+use OpenSdk\Middleware\Middleware;
+use OpenSdk\Middleware\Stack;
 use OpenSdk\Resource\Factory as ResourceFactory;
 use OpenSdk\Tests\TestCase;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ResponseInterface as Response;
 
 class ClientTest extends TestCase
 {
@@ -24,8 +23,8 @@ class ClientTest extends TestCase
 
 	public function testUsePushesMiddlewareToStack()
 	{
-		$middleware = $this->createMock(MiddlewareInterface::class);
-		$stack = $this->createMock(StackInterface::class);
+		$middleware = $this->createMock(Middleware::class);
+		$stack = $this->createMock(Stack::class);
 		$client = $this->getMockForAbstractClass(Client::class);
 
 		$stack->method('setClient')
@@ -41,9 +40,9 @@ class ClientTest extends TestCase
 
 	public function testSendExecutesMiddlewareStackAndReturnsResourceFactory()
 	{
-		$request = $this->createMock(RequestInterface::class);
-		$response = $this->createMock(ResponseInterface::class);
-		$stack = $this->createMock(StackInterface::class);
+		$request = $this->mockRequest();
+		$response = $this->mockResponse();
+		$stack = $this->createMock(Stack::class);
 		$client = $this->getMockForAbstractClass(Client::class);
 
 		$stack->method('setClient')
@@ -53,7 +52,7 @@ class ClientTest extends TestCase
 			->method('__invoke')
 			->with(
 				$this->identicalTo($request),
-				$this->isInstanceOf(ResponseInterface::class)
+				$this->isInstanceOf(Response::class)
 			)
 			->willReturn($response);
 

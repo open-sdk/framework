@@ -2,11 +2,11 @@
 
 namespace OpenSdk\Middleware;
 
-use OpenSdk\Client\ClientAwareInterface as ClientAware;
+use OpenSdk\Client\ClientAware;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-interface StackInterface extends ClientAware
+interface Stack extends ClientAware
 {
 	/**
 	 * Add a new middleware or callable instance to the stack of middleware.
@@ -14,7 +14,7 @@ interface StackInterface extends ClientAware
 	 * Note, a newly added middleware **MUST** be prepended instead of appended
 	 * to keep the executing middleware in the correct order.
 	 *
-	 * @param MiddlewareInterface|(ClientAware&MiddlewareInterface) $middleware
+	 * @param Middleware|(ClientAware&Middleware) $middleware
 	 */
 	public function push($middleware);
 

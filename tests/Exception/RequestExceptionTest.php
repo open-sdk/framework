@@ -10,15 +10,13 @@ class RequestExceptionTest extends ExceptionTestCase
 {
 	public function testIsSdkException()
 	{
-		$error = new RequestException('testing', $this->mockRequest());
-
-		$this->assertInstanceOf(SdkException::class, $error);
+		$this->assertSubclassOf(SdkException::class, RequestException::class);
 	}
 
 	public function testExceptionStoresRequest()
 	{
 		$request = $this->mockRequest();
-		$error = new RequestException('testing', $request);
+		$error = new RequestException($request);
 
 		$this->assertSame($request, $error->getRequest());
 	}

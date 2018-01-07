@@ -10,32 +10,14 @@ class ResponseExceptionTest extends ExceptionTestCase
 {
 	public function testIsSdkException()
 	{
-		$request = $this->mockRequest();
-		$response = $this->mockResponse();
-
-		$error = new ResponseException('testing', $request, $response);
-
-		$this->assertInstanceOf(SdkException::class, $error);
+		$this->assertSubclassOf(SdkException::class, ResponseException::class);
 	}
 
-	public function testExceptionStoresRequestAndResponse()
+	public function testExceptionStoresResponse()
 	{
-		$request = $this->mockRequest();
 		$response = $this->mockResponse();
+		$error = new ResponseException($response);
 
-		$error = new ResponseException('testing', $request, $response);
-
-		$this->assertSame($request, $error->getRequest());
 		$this->assertSame($response, $error->getResponse());
-	}
-
-	public function testExceptionCodeIsResponseStatusCode()
-	{
-		$request = $this->mockRequest();
-		$response = $this->mockResponse(404);
-
-		$error = new ResponseException('testing', $request, $response);
-
-		$this->assertSame(404, $error->getCode());
 	}
 }

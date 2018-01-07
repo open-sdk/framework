@@ -85,7 +85,7 @@ class Factory implements ClientAware
 			return new $type($this->asArray());
 		}
 
-		throw new ResourceException("Class type '{$type}' is not a resource model.", $this);
+		throw new ResourceException($this, "Class type '{$type}' is not a resource model.");
 	}
 
 	/**
@@ -107,6 +107,6 @@ class Factory implements ClientAware
 			});
 		}
 
-		throw new ResourceException("Class type '{$type}' is not a resource model.", $this);
+		throw new ResourceException($this, "Class type '{$type}' is not a resource model.");
 	}
 }

@@ -2,34 +2,29 @@
 
 namespace OpenSdk\Exception;
 
-use OpenSdk\Resource\Decoder as ResourceDecoder;
-use OpenSdk\Resource\Factory as ResourceFactory;
+use OpenSdk\Resource\Decoder;
 use Throwable;
 
-class DecoderException extends ResourceException
+class DecoderException extends \RuntimeException implements SdkException
 {
 	/**
 	 * The decoder which caused this error.
 	 *
-	 * @var ResourceDecoder
+	 * @var Decoder
 	 */
 	private $decoder;
 
 	/**
 	 * Create an error for issues during response body decoding.
 	 *
-	 * @param string          $message
-	 * @param ResourceDecoder $decoder
-	 * @param ResourceFactory $factory
-	 * @param Throwable       $previous
+	 * @param Decoder   $decoder
+	 * @param string    $message
+	 * @param integer   $code
+	 * @param Throwable $previous
 	 */
-	public function __construct(
-		string $message,
-		ResourceDecoder $decoder,
-		ResourceFactory $factory,
-		Throwable $previous = null
-	) {
-		parent::__construct($message, $factory, $previous);
+	public function __construct(Decoder $decoder, string $message = '', int $code = 0, Throwable $previous = null)
+	{
+		parent::__construct($message, $code, $previous);
 
 		$this->decoder = $decoder;
 	}
@@ -37,9 +32,9 @@ class DecoderException extends ResourceException
 	/**
 	 * Get the decoder which caused this error.
 	 *
-	 * @return ResourceDecoder
+	 * @return Decoder
 	 */
-	public function getDecoder(): ResourceDecoder
+	public function getDecoder(): Decoder
 	{
 		return $this->decoder;
 	}

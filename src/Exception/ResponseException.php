@@ -2,11 +2,10 @@
 
 namespace OpenSdk\Exception;
 
-use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Throwable;
 
-class ResponseException extends RequestException
+class ResponseException extends \RuntimeException implements SdkException
 {
 	/**
 	 * The response which caused this error.
@@ -18,18 +17,14 @@ class ResponseException extends RequestException
 	/**
 	 * Create an error for issues after receiving a response.
 	 *
-	 * @param string    $message
-	 * @param Request   $request
 	 * @param Response  $response
+	 * @param string    $message
+	 * @param integer   $code
 	 * @param Throwable $previous
 	 */
-	public function __construct(
-		string $message,
-		Request $request,
-		Response $response,
-		Throwable $previous = null
-	) {
-		parent::__construct($message, $request, $response->getStatusCode(), $previous);
+	public function __construct(Response $response, string $message = '', int $code = 0, Throwable $previous = null)
+	{
+		parent::__construct($message, $code, $previous);
 
 		$this->response = $response;
 	}

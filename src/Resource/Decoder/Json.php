@@ -16,7 +16,7 @@ class Json implements Decoder
 		$data = json_decode($factory->getResponse()->getBody()->getContents(), true);
 
 		if (json_last_error() !== JSON_ERROR_NONE) {
-			throw new DecoderException(json_last_error_msg(), $this, $factory);
+			throw new DecoderException($this, json_last_error_msg());
 		}
 
 		return $data;

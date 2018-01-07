@@ -9,11 +9,9 @@ use OpenSdk\Tests\TestCase;
 
 class SendRequestMiddlewareTest extends TestCase
 {
-	public function testImplementsMiddlewareInterface()
+	public function testIsMiddleware()
 	{
-		$this->assertTrue(
-			is_subclass_of(SendRequestMiddleware::class, Middleware::class)
-		);
+		$this->assertSubclassOf(Middleware::class, SendRequestMiddleware::class);
 	}
 
 	public function testStoresClient()

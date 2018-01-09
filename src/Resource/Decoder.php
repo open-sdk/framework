@@ -3,17 +3,18 @@
 namespace OpenSdk\Resource;
 
 use OpenSdk\Exception\DecoderException;
+use Psr\Http\Message\ResponseInterface as Response;
 
 interface Decoder
 {
 	/**
-	 * Decode the response of the resource factory to a PHP array.
+	 * Decode the body of the response to a PHP array.
 	 *
-	 * @param Factory $factory
-	 *
-	 * @throws DecoderException
+	 * @param Response $response
 	 *
 	 * @return array
+	 *
+	 * @throws DecoderException
 	 */
-	public function toArray(Factory $factory): array;
+	public function decode(Response $response): array;
 }

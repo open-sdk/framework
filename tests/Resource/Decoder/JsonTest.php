@@ -11,38 +11,33 @@ class JsonTest extends TestCase
 {
 	public function testDecoderReturnsDecodedJson()
 	{
-		$request = $this->mockRequest();
 		$response = $this->mockResponse();
-		$factory = $this->mockResourceFactory($request, $response);
 		$stream = $this->createMock(Stream::class);
-		$json = json_encode(['testing' => true]);
+		$data = ['testing' => true];
 
 		$response->method('getBody')
 			->willReturn($stream);
 
 		$stream->method('getContents')
-			->willReturn($json);
+			->willReturn(json_encode($data));
 
-		$data = (new JsonDecoder)->toArray($factory);
-
-		$this->assertTrue($data['testing']);
+		$this->assertSame($data, (new JsonDecoder)->decode($response));
 	}
 
 	public function testDecoderThrowsExceptionForInvalidJson()
 	{
-		$request = $this->mockRequest();
 		$response = $this->mockResponse();
-		$factory = $this->mockResourceFactory($request, $response);
 		$stream = $this->createMock(Stream::class);
+		$data = '{"something:weird"';
 
 		$response->method('getBody')
 			->willReturn($stream);
 
 		$stream->method('getContents')
-			->willReturn('{invalid: "json}');
+			->willReturn($data);
 
 		$this->expectException(DecoderException::class);
 
-		(new JsonDecoder)->toArray($factory);
+		(new JsonDecoder)->decode($response);
 	}
 }

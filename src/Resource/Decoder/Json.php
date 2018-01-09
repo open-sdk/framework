@@ -4,21 +4,21 @@ namespace OpenSdk\Resource\Decoder;
 
 use OpenSdk\Exception\DecoderException;
 use OpenSdk\Resource\Decoder;
-use OpenSdk\Resource\Factory;
+use Psr\Http\Message\ResponseInterface as Response;
 
 class Json implements Decoder
 {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function toArray(Factory $factory): array
+	public function decode(Response $response): array
 	{
-		$data = json_decode($factory->getResponse()->getBody()->getContents(), true);
+		$data = @json_decode($response->getBody()->getContents(), true);
 
-		if (json_last_error() !== JSON_ERROR_NONE) {
-			throw new DecoderException($this, json_last_error_msg());
+		if (json_last_error() === JSON_ERROR_NONE) {
+			return $data;
 		}
 
-		return $data;
+		throw new DecoderException(json_last_error_msg());
 	}
 }

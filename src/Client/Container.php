@@ -5,7 +5,7 @@ namespace OpenSdk\Client;
 use Http\Client\HttpClient;
 use Http\Message\MessageFactory as HttpFactory;
 use OpenSdk\Middleware\Stack as MiddlewareStack;
-use OpenSdk\Resource\Decoder as ResourceDecoder;
+use OpenSdk\Resource\ManagerFactory as ResourceManagerFactory;
 
 abstract class Container
 {
@@ -31,11 +31,11 @@ abstract class Container
 	private $middlewareStack;
 
 	/**
-	 * A decoder which handles resource usage from any response body.
+	 * Resource manager factory to help with response data usage.
 	 *
-	 * @var ResourceDecoder
+	 * @var ResourceManagerFactory
 	 */
-	private $resourceDecoder;
+	private $resourceManagerFactory;
 
 	/**
 	 * Register a new instance for transporting requests and responses.
@@ -98,22 +98,22 @@ abstract class Container
 	}
 
 	/**
-	 * Register a new decoder to handle responses as resources.
+	 * Get the resource manager factory to help with response data usage.
 	 *
-	 * @param ResourceDecoder $decoder
+	 * @param ResourceManagerFactory $factory
 	 */
-	public function setResourceDecoder(ResourceDecoder $decoder)
+	public function setResourceManagerFactory(ResourceManagerFactory $factory)
 	{
-		$this->resourceDecoder = $decoder;
+		$this->resourceManagerFactory = $factory;
 	}
 
 	/**
-	 * Get the decoder to handle responses as resources.
+	 * Set the resource manager factory to help with response data usage.
 	 *
-	 * @return ResourceDecoder
+	 * @return ResourceManagerFactory
 	 */
-	public function getResourceDecoder(): ResourceDecoder
+	public function getResourceManagerFactory(): ResourceManagerFactory
 	{
-		return $this->resourceDecoder;
+		return $this->resourceManagerFactory;
 	}
 }

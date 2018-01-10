@@ -3,6 +3,7 @@
 namespace OpenSdk\Tests\Middleware;
 
 use Http\Client\HttpClient;
+use OpenSdk\Client\Client;
 use OpenSdk\Middleware\Middleware;
 use OpenSdk\Middleware\SendRequestMiddleware;
 use OpenSdk\Tests\TestCase;
@@ -16,7 +17,7 @@ class SendRequestMiddlewareTest extends TestCase
 
 	public function testStoresClient()
 	{
-		$client = $this->createClient();
+		$client = $this->createMock(Client::class);
 		$middleware = new SendRequestMiddleware;
 
 		$this->assertSame($middleware, $middleware->setClient($client));
@@ -27,7 +28,7 @@ class SendRequestMiddlewareTest extends TestCase
 	{
 		$request = $this->mockRequest();
 		$response = $this->mockResponse();
-		$client = $this->createClient();
+		$client = $this->getMockForAbstractClass(Client::class);
 		$http = $this->createMock(HttpClient::class);
 
 		$next = function ($request, $response) {

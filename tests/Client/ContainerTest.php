@@ -6,7 +6,7 @@ use Http\Client\HttpClient;
 use Http\Message\MessageFactory as HttpFactory;
 use OpenSdk\Client\Container;
 use OpenSdk\Middleware\Stack as MiddlewareStack;
-use OpenSdk\Resource\Decoder as ResourceDecoder;
+use OpenSdk\Resource\ManagerFactory as ResourceManagerFactory;
 use OpenSdk\Tests\TestCase;
 
 class ContainerTest extends TestCase
@@ -46,13 +46,13 @@ class ContainerTest extends TestCase
 		$this->assertSame($stack, $container->getMiddlewareStack());
 	}
 
-	public function testResourceDecoderIsStored()
+	public function testResourceManagerFactoryIsStored()
 	{
-		$decoder = $this->createMock(ResourceDecoder::class);
+		$factory = $this->createMock(ResourceManagerFactory::class);
 		$container = $this->getMockForAbstractClass(Container::class);
 
-		$container->setResourceDecoder($decoder);
+		$container->setResourceManagerFactory($factory);
 
-		$this->assertSame($decoder, $container->getResourceDecoder());
+		$this->assertSame($factory, $container->getResourceManagerFactory());
 	}
 }

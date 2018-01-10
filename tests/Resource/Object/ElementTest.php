@@ -2,7 +2,6 @@
 
 namespace OpenSdk\Tests\Resource\Object;
 
-use ArrayAccess;
 use OpenSdk\Resource\Object\Element;
 use OpenSdk\Tests\ResourceObjectTestCase;
 use PHPUnit\Framework\MockObject\MockObject as PHPUnitMock;
@@ -170,7 +169,7 @@ class ElementTest extends ResourceObjectTestCase
 
 	public function testIsArrayAccessible()
 	{
-		$this->assertSubclassOf(ArrayAccess::class, Element::class);
+		$this->assertSubclassOf(\ArrayAccess::class, Element::class);
 	}
 
 	public function testOffsetExistsReturnsTrue()

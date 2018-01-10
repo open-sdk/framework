@@ -5,7 +5,7 @@ namespace OpenSdk\Tests\Client;
 use OpenSdk\Client\Client;
 use OpenSdk\Middleware\Middleware;
 use OpenSdk\Middleware\Stack;
-use OpenSdk\Resource\Factory as ResourceFactory;
+use OpenSdk\Resource\Manager as ResourceManager;
 use OpenSdk\Tests\TestCase;
 use Psr\Http\Message\ResponseInterface as Response;
 
@@ -18,7 +18,7 @@ class ClientTest extends TestCase
 		$this->assertNotEmpty($client->getHttpClient());
 		$this->assertNotEmpty($client->getHttpFactory());
 		$this->assertNotEmpty($client->getMiddlewareStack());
-		$this->assertNotEmpty($client->getResourceDecoder());
+		$this->assertNotEmpty($client->getResourceManagerFactory());
 	}
 
 	public function testUsePushesMiddlewareToStack()
@@ -38,7 +38,7 @@ class ClientTest extends TestCase
 		$client->use($middleware);
 	}
 
-	public function testSendExecutesMiddlewareStackAndReturnsResourceFactory()
+	public function testSendExecutesMiddlewareStackAndReturnsResourceManager()
 	{
 		$request = $this->mockRequest();
 		$response = $this->mockResponse();
@@ -57,9 +57,8 @@ class ClientTest extends TestCase
 			->willReturn($response);
 
 		$client->setMiddlewareStack($stack);
-		$resources = $client->send($request);
+		$manager = $client->send($request);
 
-		$this->assertInstanceOf(ResourceFactory::class, $resources);
-		$this->assertSame($client, $resources->getClient());
+		$this->assertInstanceOf(ResourceManager::class, $manager);
 	}
 }

@@ -3,7 +3,6 @@
 namespace OpenSdk\Exception;
 
 use Psr\Http\Message\ResponseInterface as Response;
-use Throwable;
 
 class ResponseException extends \RuntimeException implements SdkException
 {
@@ -17,12 +16,12 @@ class ResponseException extends \RuntimeException implements SdkException
 	/**
 	 * Create an error for issues after receiving a response.
 	 *
-	 * @param Response  $response
-	 * @param string    $message
-	 * @param integer   $code
-	 * @param Throwable $previous
+	 * @param Response   $response
+	 * @param string     $message
+	 * @param integer    $code
+	 * @param \Throwable $previous
 	 */
-	public function __construct(Response $response, string $message = '', int $code = 0, Throwable $previous = null)
+	public function __construct(Response $response, string $message = '', int $code = 0, \Throwable $previous = null)
 	{
 		parent::__construct($message, $code, $previous);
 

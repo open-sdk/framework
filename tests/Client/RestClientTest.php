@@ -4,7 +4,7 @@ namespace OpenSdk\Tests\Client;
 
 use OpenSdk\Client\RestClient;
 use OpenSdk\Tests\TestCase;
-use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\RequestInterface as Request;
 
 class RestClientTest extends TestCase
 {
@@ -19,7 +19,7 @@ class RestClientTest extends TestCase
 
 		$request = $client->createRequest('POST', '/my-path', $options);
 
-		$this->assertInstanceOf(RequestInterface::class, $request);
+		$this->assertInstanceOf(Request::class, $request);
 		$this->assertSame('POST', $request->getMethod());
 		$this->assertSame('/my-path', $request->getRequestTarget());
 		$this->assertSame($options['headers']['X-Test'], $request->getHeaderLine('X-Test'));

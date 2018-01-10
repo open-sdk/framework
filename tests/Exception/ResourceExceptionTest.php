@@ -12,12 +12,4 @@ class ResourceExceptionTest extends ExceptionTestCase
 	{
 		$this->assertSubclassOf(SdkException::class, ResourceException::class);
 	}
-
-	public function testExceptionStoresFactory()
-	{
-		$factory = $this->mockResourceFactory();
-		$error = new ResourceException($factory);
-
-		$this->assertSame($factory, $error->getFactory());
-	}
 }

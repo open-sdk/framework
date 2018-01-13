@@ -194,10 +194,7 @@ class ManagerTest extends TestCase
 	{
 		$manager = $this->createManager(['data' => ['name' => 'Cedric']])->setUnwrap('data');
 
-		/** @var UserModel */
-		$user = $manager->asModel(UserModel::class);
-
-		$this->assertSame('Cedric', $user->getName());
+		$this->assertSame('Cedric', $manager->asModel(UserModel::class)->getName());
 	}
 
 	public function testAsCollectionReturnsCollectionWithModels()

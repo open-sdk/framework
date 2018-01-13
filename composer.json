@@ -26,6 +26,7 @@
 	"require-dev": {
 		"codacy/coverage": "^1.4.1",
 		"guzzlehttp/psr7": "^1.4.2",
+		"open-sdk/framework-phpstan": "^0.1.0",
 		"php-http/guzzle6-adapter": "^1.1.1",
 		"php-http/message": "^1.6.0",
 		"phpstan/phpstan": "^0.9.1",

@@ -1,4 +1,5 @@
 includes:
+	- vendor/open-sdk/framework-phpstan/extension.neon
 	- vendor/phpstan/phpstan-phpunit/extension.neon
 	- vendor/phpstan/phpstan-phpunit/rules.neon
 	- vendor/phpstan/phpstan-phpunit/strictRules.neon

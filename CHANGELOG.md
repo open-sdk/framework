@@ -1,3 +1,19 @@
+## [0.4.1](https://github.com/open-sdk/framework/compare/0.4.0...0.4.1) (2018-01-14)
+
+### New features
+- add change log file with all changes from all releases ([1dc7975](https://github.com/open-sdk/framework/commit/1dc7975c2f8f83788c19594d5652f41ccd7bfc15))
+
+### Bug fixes
+- use the current class within the exception message for model validation ([1da2b75](https://github.com/open-sdk/framework/commit/1da2b75175ad03f81fe5e2c3481ea3cb6ba489cf))
+
+### Code refactors
+- remove unnecessary hashtag from commit hash ([93952bc](https://github.com/open-sdk/framework/commit/93952bc44b33e8ce59a85cbebb9e71c41ff8d3b7))
+- use the phpstan extension and remove extra annotation ([2d37923](https://github.com/open-sdk/framework/commit/2d37923aab2f3a025a471c5bb67d14b4db01411b))
+
+### Other chores
+- bump up the license year ([2edaaea](https://github.com/open-sdk/framework/commit/2edaaea497ce1cf2821f111b5c7b19591fc4d0ad))
+
+
 ## [0.4.0](https://github.com/open-sdk/framework/compare/0.3.0...0.4.0) (2018-01-11)
 
 ### New features

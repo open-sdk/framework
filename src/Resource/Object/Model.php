@@ -103,10 +103,12 @@ class Model extends Element
 	 */
 	public static function validate(string $type): string
 	{
-		if (is_a($type, static::class, true)) {
+		$class = static::class;
+
+		if (is_a($type, $class, true)) {
 			return $type;
 		}
 
-		throw new ResourceException("Class '{$type}' is not a model.");
+		throw new ResourceException("Class '{$type}' is not a '{$class}'.");
 	}
 }
